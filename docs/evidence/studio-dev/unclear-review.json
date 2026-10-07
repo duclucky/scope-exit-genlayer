@@ -1,0 +1,17 @@
+{
+  "network": "studio-dev",
+  "contractAddress": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
+  "review": {
+    "at": 1791365921,
+    "attempt": 1,
+    "digest": "56c8358ceda3d52c999d91215249be98d30110bf6d9cdedea6f67ace851462ee",
+    "id": "demo-unclear-v1",
+    "ok": false,
+    "reason": "MODEL_UNCLEAR",
+    "relations": [
+      "UNVERIFIABLE",
+      "UNVERIFIABLE"
+    ],
+    "sourceHash": "af187a2c26b2429a579039403f34d9a5d5f29a1e01019662043068fa1ca2beaa"
+  }
+}

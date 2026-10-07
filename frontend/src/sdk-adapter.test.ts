@@ -32,7 +32,14 @@ function offline() {
       case 'eth_getTransactionReceipt': result = { transactionHash: hash, transactionIndex: '0x0', blockHash: hash, blockNumber: '0x1', from: sender, to: contract, cumulativeGasUsed: '0x0', gasUsed: '0x0', effectiveGasPrice: '0x0', logs: [], logsBloom: '0x' + '0'.repeat(512), status: '0x1', type: '0x0' }; break;
       case 'eth_getTransactionByHash': result = { hash, from: sender, to: contract, input: '0x', nonce: '0x0', value: '0x0', gas: '0x30d40', gasPrice: '0x0', blockHash: hash, blockNumber: '0x1', transactionIndex: '0x0', type: '0x0', status: 'FINALIZED', execution_result: 'SUCCESS', consensus_data: { leader_receipt: [{ execution_result: 'SUCCESS' }] } }; break;
       case 'sim_getTransactionByHash': result = { status: 'FINALIZED', execution_result: 'SUCCESS', consensus_data: { leader_receipt: [{ execution_result: 'SUCCESS' }] } }; break;
-      case 'gen_call': reads++; result = bytesToHex(abi.calldata.encode(JSON.stringify(agreement))).slice(2); break;
+      case 'gen_call': {
+        reads++;
+        const encoded = fromRlp(request.params[0].data, 'hex') as `0x${string}`[];
+        const calldata = abi.calldata.decode(hexToBytes(encoded[0])) as Map<string, unknown>;
+        const value = calldata.get('') === 'get_attempt' ? { id: 'fixture', attempt: 1, reason: 'OK', digest: agreement.digest } : agreement;
+        result = bytesToHex(abi.calldata.encode(JSON.stringify(value))).slice(2);
+        break;
+      }
       default: throw new Error(`Unexpected offline RPC ${request.method}`);
     }
     return new Response(JSON.stringify({ jsonrpc: '2.0', id: request.id, result }), { headers: { 'content-type': 'application/json' } });
@@ -65,7 +72,7 @@ describe('actual project adapter through the real SDK, intercepted I/O only', ()
     const encoded = fromRlp(parameters.txCalldata, 'hex') as `0x${string}`[];
     expect(abi.calldata.decode(hexToBytes(encoded[0]))).toEqual(new Map<string, unknown>([['', method], ['args', ['fixture']]]));
     expect(progress.map(p => p.stage)).toEqual(['signing', 'submitted', 'accepted', 'finalized']);
-    expect(io.reads()).toBe(1);
+    expect(io.reads()).toBe(2);
     expect(io.requests.filter(r => r.method === 'gen_call').every(r => r.endpoint === 'https://ic.offline.invalid')).toBe(true);
     expect(io.requests.filter(r => r.method === 'sim_estimateTransactionFees').every(r => r.endpoint === 'https://wallet.offline.invalid')).toBe(true);
   });

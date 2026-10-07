@@ -79,6 +79,29 @@ def test_independent_partial_exit_preserves_other_exercise(case):
     assert a["buyerCreditGEN"] == a["issuerCreditGEN"] == "1" and a["escrowGEN"] == "0"
 
 
+def test_reverse_dependency_closes_the_correct_root_and_dependant(case):
+    purchase(case)
+    review(case, "DEPENDENT", "INDEPENDENT")
+    _, c, _ = case
+    c.exit_component("case", "B")
+    a = json.loads(c.get_agreement("case"))
+    assert [p["status"] for p in a["permissions"]] == ["CANCELLED"] * 2
+    assert a["buyerCreditGEN"] == "2" and a["escrowGEN"] == "0"
+
+
+def test_ratification_digest_cannot_replay_between_entities(case):
+    vm, c, roles = case
+    digest = json.loads(c.get_agreement("case"))["digest"]
+    c.create_offer("other", "Other scope", roles[1].as_hex,
+                   "A", "A independent", "B", "B independent", EXPIRY)
+    vm.sender = roles[1]
+    vm.value = 2 * GEN
+    before = (state(c), c.get_agreement("other"))
+    with pytest.raises(Exception, match="definition mismatch"):
+        c.accept_offer("other", digest)
+    assert (state(c), c.get_agreement("other")) == before
+
+
 def test_already_consumed_dependant_blocks_root_cancellation(case):
     purchase(case)
     review(case)

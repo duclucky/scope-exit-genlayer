@@ -1,0 +1,45 @@
+{
+  "network": "studio-dev",
+  "chainId": 61997,
+  "contractAddress": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
+  "sourceCommit": "9e5de0c122f27967c735034bd73dc67961bbe6cb",
+  "at": "2026-10-07T09:53:09.612Z",
+  "agreement": {
+    "attempt": 1,
+    "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+    "buyerCreditGEN": "0",
+    "dependencies": null,
+    "digest": "56c8358ceda3d52c999d91215249be98d30110bf6d9cdedea6f67ace851462ee",
+    "escrowGEN": "0",
+    "expiry": 1791366410,
+    "id": "demo-unclear-v1",
+    "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+    "issuerCreditGEN": "0",
+    "permissions": [
+      {
+        "id": "A",
+        "status": "EXPIRED",
+        "terms": "The buyer may use a record under related permissions whose scope will be specified later.",
+        "title": "Analysis"
+      },
+      {
+        "id": "B",
+        "status": "EXPIRED",
+        "terms": "The buyer may share outputs if appropriate other permissions apply; the necessary permissions are not specified.",
+        "title": "Export"
+      }
+    ],
+    "phase": "CLOSED",
+    "receivedGEN": "2",
+    "title": "unclear permission bundle",
+    "withdrawnGEN": "2"
+  },
+  "accounting": {
+    "conserved": true,
+    "creditsGEN": "0",
+    "escrowGEN": "0",
+    "receivedGEN": "6",
+    "withdrawnGEN": "6"
+  },
+  "contractBalanceGEN": "0"
+}

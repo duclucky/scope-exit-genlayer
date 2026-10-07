@@ -16,3 +16,17 @@ test('public projection discards all validator and payload material', () => {
   assert.equal(result.contractAddress, '0x' + 'a'.repeat(40));
   assert.ok(!JSON.stringify(result).includes('must-not-survive'));
 });
+
+test('actual Studio leader + validator-path shape agrees with protocol result', () => {
+  const receipt = { status: 'FINALIZED', txExecutionResult: 1,
+    consensus_data: { leader_receipt: [
+      { mode: 'leader', execution_result: 'SUCCESS' },
+      { mode: 'validator', execution_result: 'ERROR' },
+    ] } };
+  assert.equal(executionResult(receipt), 'SUCCESS');
+  assert.equal(executionResult({ ...receipt, txExecutionResult: 2 }), 'ERROR');
+  assert.equal(executionResult({ status: 'PENDING', txExecutionResult: 0 }), 'UNKNOWN');
+  assert.equal(executionResult({ status: 'PENDING', txExecutionResultName: 'NOT_VOTED' }), 'UNKNOWN');
+  assert.equal(executionResult({ ...receipt, consensus_data: { leader_receipt: [{ mode: 'leader', execution_result: 'ERROR' }] } }), 'ERROR');
+  assert.equal(executionResult({ consensus_data: { leader_receipt: [{ mode: 'validator', execution_result: 'SUCCESS' }] } }), 'UNKNOWN');
+});

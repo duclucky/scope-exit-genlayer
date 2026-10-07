@@ -10,6 +10,6 @@ run(python, ['scripts/genvm_lint.py', 'check', 'contracts/scope_exit.py']);
 run(python, ['scripts/cache_reference.py']);
 run(python, ['-m', 'pytest', 'tests/direct', '-q', '--tb=short']);
 run(python, ['scripts/run_glsim_tests.py']);
-run(process.execPath, ['--test', 'tests/tooling/receipt.test.mjs']);
+run(process.execPath, ['--test', 'tests/tooling/receipt.test.mjs', 'tests/tooling/verification.test.mjs']);
 run(windows ? 'npm.cmd' : 'npm', ['--prefix', 'frontend', 'test'], windows);
 run(windows ? 'npm.cmd' : 'npm', ['--prefix', 'frontend', 'run', 'build'], windows);

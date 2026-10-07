@@ -31,5 +31,14 @@ mocked external boundary. Neither is proof of an actual GEN transfer. Studio Dev
 must separately prove the exact native contract-balance decrease, recipient
 receipt/balance result, final successful execution and zero-liability closure.
 
-Local UI, mocked consensus and unsigned runtime probes are not finalized Studio
-Dev lifecycle or browser-wallet signing evidence. Those remain pending.
+Local UI, mocked consensus and unsigned runtime probes are distinct from the
+signed Studio Dev evidence under `evidence/studio-dev/`. That directory now
+contains an actual finalized dependency-cancellation/refund lifecycle with exact
+native transfer proof. Further outcomes and browser-wallet signing remain
+pending until their own evidence is recorded.
+
+Raw Studio `leader_receipt` may include both `mode: leader` and `mode: validator`
+entries. The shared parser selects contract execution from leader mode and
+cross-checks the protocol execution result. It never mistakes a validator-path
+return code for the contract's execution result, or finality alone for success.
+The observed mixed-mode shape is a regression fixture.

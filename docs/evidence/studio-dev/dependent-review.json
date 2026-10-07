@@ -1,0 +1,17 @@
+{
+  "network": "studio-dev",
+  "contractAddress": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
+  "review": {
+    "at": 1791365376,
+    "attempt": 1,
+    "digest": "9230075d953e5573a186cb296cec8bb812d194f927d2a79755f55bada50181b8",
+    "id": "demo-dependent-v1",
+    "ok": true,
+    "reason": "OK",
+    "relations": [
+      "INDEPENDENT",
+      "DEPENDENT"
+    ],
+    "sourceHash": "af187a2c26b2429a579039403f34d9a5d5f29a1e01019662043068fa1ca2beaa"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "network": "studio-dev",
+  "contractAddress": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
+  "sourceHash": "e8d24d9417e2214839568e156f270d67a1ecb9a1d432b7dd79fe081c9cd6359e",
+  "methods": {
+    "accept_offer": {
+      "readonly": false,
+      "payable": true
+    },
+    "cancel_offer": {
+      "readonly": false,
+      "payable": false
+    },
+    "close": {
+      "readonly": false,
+      "payable": false
+    },
+    "consume_component": {
+      "readonly": false,
+      "payable": false
+    },
+    "create_offer": {
+      "readonly": false,
+      "payable": false
+    },
+    "exit_component": {
+      "readonly": false,
+      "payable": false
+    },
+    "get_accounting": {
+      "readonly": true,
+      "payable": false
+    },
+    "get_agreement": {
+      "readonly": true,
+      "payable": false
+    },
+    "get_attempt": {
+      "readonly": true,
+      "payable": false
+    },
+    "get_history": {
+      "readonly": true,
+      "payable": false
+    },
+    "get_policy": {
+      "readonly": true,
+      "payable": false
+    },
+    "get_right": {
+      "readonly": true,
+      "payable": false
+    },
+    "list_agreements": {
+      "readonly": true,
+      "payable": false
+    },
+    "recover_expired": {
+      "readonly": false,
+      "payable": false
+    },
+    "review_dependencies": {
+      "readonly": false,
+      "payable": false
+    },
+    "withdraw": {
+      "readonly": false,
+      "payable": false
+    }
+  },
+  "after": {
+    "at": "2026-10-07T09:34:52.073Z",
+    "agreement": {
+      "attempt": 0,
+      "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+      "buyerCreditGEN": "0",
+      "dependencies": null,
+      "digest": "4b166c36a32b92ccc468e992d682565827f598ae41714a932c6ffbba75e7ccac",
+      "escrowGEN": "0",
+      "expiry": 1791368266,
+      "id": "zero-smoke-v1",
+      "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+      "issuerCreditGEN": "0",
+      "permissions": [
+        {
+          "id": "A",
+          "status": "CANCELLED",
+          "terms": "A stands independently.",
+          "title": "A"
+        },
+        {
+          "id": "B",
+          "status": "CANCELLED",
+          "terms": "B stands independently.",
+          "title": "B"
+        }
+      ],
+      "phase": "CLOSED",
+      "receivedGEN": "0",
+      "title": "Unfunded metadata smoke",
+      "withdrawnGEN": "0"
+    },
+    "accounting": {
+      "conserved": true,
+      "creditsGEN": "0",
+      "escrowGEN": "0",
+      "receivedGEN": "2",
+      "withdrawnGEN": "2"
+    },
+    "contractBalanceGEN": "0"
+  },
+  "passed": true
+}

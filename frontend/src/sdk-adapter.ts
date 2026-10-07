@@ -6,6 +6,7 @@ import { ConfigurationError } from './adapter';
 import type { Agreement, Activity, ContractAdapter, TransactionProgress } from './adapter';
 import type { EVMProvider } from './wallet';
 import { ensureStudioNetwork, IC_RPC, WALLET_RPC, studioChain } from './network';
+import { executionResult } from './receipt.mjs';
 
 export interface AdapterConfig { address?: string; account?: string; provider?: EVMProvider; icRPC?: string; walletRPC?: string }
 const record = (raw: unknown): Record<string, unknown> => {
@@ -26,16 +27,20 @@ export function mapAgreement(raw: unknown): Agreement {
   return a as unknown as Agreement;
 }
 export function successfulExecution(raw: unknown) {
-  const r = record(raw);
-  const c = r.consensus_data as { leader_receipt?: { execution_result?: string }[] } | undefined;
-  const results = [r.executionResult, r.execution_result, ...(c?.leader_receipt?.map(x => x.execution_result) ?? [])].filter(x => x != null);
-  return results.length > 0 ? results.every(x => x === 'SUCCESS') : r.txExecutionResultName === 'FINISHED_WITH_RETURN';
+  return executionResult(raw) === 'SUCCESS';
 }
 export function createSDKAdapter(config: AdapterConfig): ContractAdapter {
   const configured = typeof config.address === 'string' && isAddress(config.address) && !/^0x0{40}$/i.test(config.address);
   const target = () => { if (!configured) throw new ConfigurationError(); return getAddress(config.address!); };
   const reader = createClient({ chain: studioChain(config.icRPC ?? IC_RPC) });
-  const read = async (functionName: string, args: CalldataEncodable[] = []) => reader.readContract({ address: target(), functionName, args, transactionHashVariant: TransactionHashVariant.LATEST_FINAL });
+  const read = async (functionName: string, args: CalldataEncodable[] = []) => {
+    const address = target();
+    try { return await reader.readContract({ address, functionName, args, transactionHashVariant: TransactionHashVariant.LATEST_FINAL }); }
+    catch (error) {
+      if (error instanceof Error && error.message.includes('Agreement not found')) throw new Error('This agreement could not be found. Check its link or return to the agreement list.');
+      throw new Error('The finalized agreement state could not be read. Check Studio Dev and try again.');
+    }
+  };
   const list = async () => {
     const agreements: Agreement[] = [];
     for (let page = 0; page < 200; page++) {
@@ -47,7 +52,16 @@ export function createSDKAdapter(config: AdapterConfig): ContractAdapter {
     }
     throw new Error('Too many agreements to load. Narrowing pagination is required.');
   };
-  return { configured, list, agreement: async id => mapAgreement(await read('get_agreement', [id])),
+  const getAgreement = async (id: string) => {
+    const a = mapAgreement(await read('get_agreement', [id]));
+    if (a.attempt > 0) {
+      const attempt = record(await read('get_attempt', [id, a.attempt]));
+      if (attempt.id !== id || attempt.attempt !== a.attempt || typeof attempt.reason !== 'string' || attempt.digest !== a.digest) throw new Error('The canonical review could not be bound to this agreement.');
+      a.reviewReason = attempt.reason;
+    }
+    return a;
+  };
+  return { configured, list, agreement: getAgreement,
     history: async () => {
       const agreements = await list();
       const groups = await Promise.all(agreements.map(async a => {
@@ -90,7 +104,7 @@ export function createSDKAdapter(config: AdapterConfig): ContractAdapter {
         const finalized = await reader.waitForTransactionReceipt({ hash: hash!, waitUntil: 'finalized', interval: 1500, retries: 160 });
         if (!successfulExecution(finalized)) throw new Error('Finalized execution was unsuccessful.');
         // Read the finalized owning entity before reporting completion.
-        const fresh = mapAgreement(await read('get_agreement', [String(rawArgs[0])]));
+        const fresh = await getAgreement(String(rawArgs[0]));
         progress({ stage: 'finalized', hash, message: fresh.phase === 'RETRYABLE' ? 'Review could not establish clear dependencies. Escrow is unchanged. Retry within the attempt limit or recover unused funds after expiry.' : 'Successful finalization confirmed. The latest agreement state has been reloaded.' });
       } catch {
         const update: TransactionProgress = { stage: 'failed', hash, message: hash ? 'Confirmation is incomplete. Refresh canonical state and inspect this transaction before sending it again.' : 'The wallet action was not completed. Check the selected account and Studio Dev connection.' };
