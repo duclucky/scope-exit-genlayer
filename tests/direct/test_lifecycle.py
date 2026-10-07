@@ -201,7 +201,7 @@ def test_unauthorized_participant_preserves_every_view(case, method, args):
     assert state(c) == before
 
 
-@pytest.mark.parametrize("amount", [0, GEN, 3 * GEN])
+@pytest.mark.parametrize("amount", [0, GEN, 3 * GEN], ids=["0GEN", "1GEN", "3GEN"])
 def test_exact_purchase_price_and_wrong_digest(case, amount):
     vm, c, roles = case
     vm.sender = roles[1]

@@ -16,3 +16,6 @@ precheck-report.*
 grade-report.*
 *.log
 artifacts/
+
+.vercel
+.env*

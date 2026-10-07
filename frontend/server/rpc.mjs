@@ -2,6 +2,7 @@ const allowed = new Set(['eth_chainId', 'eth_call', 'eth_getBalance', 'eth_getTr
 function publicPayload(value) {
   if (Array.isArray(value)) return value.map(publicPayload);
   if (!value || typeof value !== 'object') return value;
+  if (value.jsonrpc === '2.0' && value.error) return { jsonrpc: '2.0', id: value.id ?? null, error: { code: Number.isInteger(value.error.code) ? value.error.code : -32000, message: 'Studio Dev RPC request failed' } };
   return Object.fromEntries(Object.entries(value).filter(([key]) => !['node_config', 'validator_config', 'private_key', 'api_key'].includes(key)).map(([key, item]) => [key, publicPayload(item)]));
 }
 export function proxy(endpoint) {

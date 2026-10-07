@@ -1,6 +1,6 @@
 # ScopeExit product specification
 
-The category is locked to Projects. This complete specification governs the implementation. Admission and frontend baseline are verified; all contract/network/browser-wallet execution claims remain pending until proved.
+The category is locked to Projects. This specification preserves the Phase 4 design and its originally pending evidence plan. The executed trace below records the current verified state; those completed proofs supersede the historical pending entries. Successful extension-signed workflow evidence remains pending.
 
 ## Identity
 
@@ -8,9 +8,9 @@ The category is locked to Projects. This complete specification governs the impl
 - Project name: ScopeExit
 - Project slug: scope-exit
 - Category: Projects
-- Status: BUILDING; fourteen admission gates pass, execution pending
-- Repository: separate child repository; public origin creation pending Phase 11
-- Target network: Studio Dev, chain 61997; all deployment/browser evidence pending
+- Status: BUILDING; fourteen admission gates pass; signed contract execution verified; browser-wallet execution pending
+- Repository: https://github.com/duclucky/scope-exit-genlayer (public)
+- Target network: Studio Dev, chain 61997; active address and exact evidence linked in project README
 
 ## One-sentence product hook
 
@@ -52,7 +52,7 @@ An issuer offers two named internal permission components A and B to a named buy
 | Contract count | PASS_ADMISSION | One ScopeExit Intelligent Contract; recipient EVM interface is not a second deployed IC. |
 | Differentiation | PASS_ADMISSION | Partial purchased-rights unwind differs in question/state/consequence/interface from closest registry mechanisms. |
 | Claim-to-code | PASS_ADMISSION | Every claim maps to write, canonical view, negative test and explicit pending network evidence. |
-| Full lifecycle | PASS_ADMISSION / PENDING_EXECUTION | Complete signed browser/value/recovery acceptance design; execution cannot pass until actual finalized SUCCESS and canonical/balance evidence. |
+| Full lifecycle | PASS_ADMISSION / CONTRACT_EXECUTION_PASS / BROWSER_PENDING | Three real finalized lifecycles and four native withdrawals close with zero liabilities; actual extension-signed user workflow remains pending. Admission is distinct from execution. |
 | Scope honesty | PASS_ADMISSION | Protocol rights/GEN only; no outside ownership, delivery, automatic consumer enforcement or adoption claims. |
 
 ## Actors, roles and incentives
@@ -218,7 +218,7 @@ Duplicates revert without state/accounting changes. IDs, funded state, locked ma
 
 ## Frontend lifecycle coverage matrix
 
-Every write follows the shared typed `ContractAdapter.write` boundary, TransactionBox feedback and canonical `revision` reload after finalized successful execution. Actual SDK and deployed address are still pending; no browser transaction step is complete yet.
+Every write follows the shared typed `ContractAdapter.write` boundary, TransactionBox feedback and canonical `revision` reload after finalized successful execution. The actual SDK and deployed address are now configured and tested; the matrix below preserves the Phase 4 evidence plan. Actual local and production browser canonical reads pass, while no successful extension-signed transaction is claimed yet.
 
 | Canonical state | User action | Contract write | UI component | Frontend test | Evidence status |
 | --- | --- | --- | --- | --- | --- |
@@ -436,15 +436,31 @@ All forty prior active registry fingerprints were screened at admission. The ide
 - Resume/idempotency: check deployment identity and canonical states first; recover already-finalized writes instead of replaying. For ambiguous funding/withdrawal inspect transaction and balance before any retry. Source failure vs structural prompt/schema failure gets separate diagnosis.
 - Publication/hosting/submission: proper child Git root, exact staged/history/allowlist/secret audit before every push, CI green, Vercel Vite dist, real HTTP200/name/root verification, final README links, offline precheck Projects no BLOCKER and four-source audit. Portal packet with exact counts/current links; authenticated submission only under master authorization, otherwise deliver packet without fabricating confirmation.
 
+## Executed claim and authority trace
+
+The following current proof supersedes the originally pending network cells above. `npm run check` validates the actual contract and adapter; exact test totals are maintained in the current README and final audit.
+
+| Claim / authority path | Deterministic guard and semantic boundary | Required negative-test proof | Current canonical and network proof |
+| --- | --- | --- | --- |
+| Jointly ratified immutable internal rights | Signed issuer creates exact terms; named buyer accepts exact recomputed digest including network/contract/entity/roles/policy/expiry; only 2 GEN purchase | `test_ratification_digest_cannot_replay_between_entities`, `test_unauthorized_participant_preserves_every_view`, exact value/digest/config-lock tests | `attempts.json` has three finalized successful creations/purchases and 2 GEN escrow; `get_agreement` binds each pair |
+| Fixed authoritative vocabulary | `_source_context` fetches fixed W3C origin, recomputes exact-body SHA before `_judge`; no actor URL/version/objective or destination | `test_modified_authoritative_source_cannot_reach_consequence`, malformed/source-failure and authenticated-definition tripwires | Three `*-review.json` files bind source hash, agreement digest and current attempt; live injection did not redefine authority |
+| Neutral prerequisite meaning | `review_dependencies` independently reruns meaning; exact two pair IDs/enums and cycle/ambiguity rules before activation | `test_real_validator_replays_meaning_not_shape`, normalization/coverage/payout/cycle tests, `test_invalid_consensus_settlement_preserves_accounting` | Dependent `[INDEPENDENT,DEPENDENT]`, independent `[INDEPENDENT,INDEPENDENT]`, unclear `[UNVERIFIABLE,UNVERIFIABLE]`; actual browser detail reads |
+| Exact cancellation / surviving one-time exercise | Contract computes closure and fixed slices; no model payee/amount/class prose accepted | Full/partial/reverse closure, consumed-dependant prohibition, inactive prerequisite, duplicate/caller/state/time negatives | Dependent 2 GEN refund; independent A refund 1 GEN and B consumed for issuer 1 GEN; canonical before/after snapshots in attempts |
+| Non-penalizing ambiguity and expiry recovery | Retry changes only permitted review record; `recover_expired` independently enforces equality/late clock and fixed buyer destination | Stale-phase boundary triples, attempt cap, no-escrow duplicate, unauthorized and accounting snapshots | Unclear MODEL_UNCLEAR kept 2 GEN escrow; observer expiry recovery returned both unused slices to locked buyer |
+| Native transfer and closure | Credit debited before EVM recipient emit; only terminal rights and zero escrow/credits may close | `test_credit_debit_precedes_locked_recipient_emit_and_close`, duplicate/value/state/metadata/receipt tests | Four `transferProof.proven:true` entries: exact 2/1/1/2 GEN contract decreases and fee-aware recipient increases; all CLOSED; global 6 GEN received/withdrawn, liabilities/native balance zero |
+| Browser product / reusable interface | Selected-provider SDK account configuration, EVM chain preflight, separate IC reads, all nine wrappers/control/tests/finality/reload | `wallet.test.ts`, `sdk-adapter.test.ts`, `lifecycle-ui.test.tsx`; actual browser proxy/read commands | Seven functional routes, MetaMask/OKX detection, connected issuer; local and production actual canonical reads PASS. MetaMask write currently fails network preflight before hash; successful browser writes PENDING |
+
+Proposed consumers and milestone headroom remain design claims. No outside delivery, ownership, legal enforceability, autonomous consumer enforcement or adoption is claimed.
+
 ## Definition of Done
 
 ### Shared contribution requirements
 
 - [x] Reusable primitive, substantive semantic trust problem and fourteen admission gates.
 - [x] Complete product blueprint and own skill-designed multi-page frontend baseline with typecheck/build/browser route review.
-- [ ] One ASCII pinned-runtime recognized contract, production semantic validator and source/settlement checks implemented and linted.
-- [ ] All direct/gltest/adversarial/temporal/accounting/metadata/parser/SDK tests and required npm run check pass.
-- [ ] Actual finalized Studio Dev judgment -> rights/money consequence -> recovery/withdrawal -> zero-liability closure; sanitized canonical/native transfer proof.
+- [x] One ASCII pinned-runtime recognized contract, production semantic validator and source/settlement checks implemented and linted.
+- [x] All direct/gltest/adversarial/temporal/accounting/metadata/parser/SDK tests and required npm run check pass.
+- [x] Actual finalized Studio Dev judgment -> rights/money consequence -> recovery/withdrawal -> zero-liability closure; sanitized canonical/native transfer proof.
 - [ ] Category remains Projects; actual public repository, CI, hosting, live verification and truthful documentation.
 
 ### Projects
@@ -453,7 +469,7 @@ All forty prior active registry fingerprints were screened at admission. The ide
 - [ ] Submitted, accepted/decided, finalized successful, failed and retry feedback; canonical reads after finalization.
 - [ ] Meaningful buyer partial unwind/surviving exercise and issuer earnings; every required step has wrapper/control/test/evidence.
 - [ ] Browser-local RPC/CORS verification; actual extension wallet signed lifecycle evidence distinct from scripts.
-- [ ] UI preserves accepted design, English user copy, role/state eligibility and contextual verification rather than a system console.
+- [x] UI preserves accepted design, English user copy, role/state eligibility and contextual verification rather than a system console.
 - [ ] Exact current contract/test counts and README/submission claims trace to state/view/test/evidence.
 - [ ] genlayer-precheck.ps1 -Project scope-exit -Category projects reports NO BLOCKER with applicable dynamic checks.
 - [ ] Final master reread item-by-item proof audit; uncertainty explicitly listed; postmortem/registry updated and milestone delta recorded.

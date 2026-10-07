@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-07T10:09:45.614Z",
+  "command": "node scripts/browser-state-review.mjs",
+  "base": "https://scope-exit-genlayer.vercel.app/",
+  "network": "studio-dev",
+  "contractAddress": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
+  "mode": "ACTUAL_BROWSER_CANONICAL_READS",
+  "noWallet": true,
+  "noSignedTransactions": true,
+  "pageErrors": 0,
+  "results": [
+    {
+      "route": "/agreements",
+      "allFourFinalizedCasesRead": true
+    },
+    {
+      "route": "/agreements/demo-dependent-v1",
+      "canonicalTermsAndDependenciesRead": true,
+      "escrowGEN": "0",
+      "noIllegalWriteControl": true
+    },
+    {
+      "route": "/agreements/demo-independent-v1",
+      "canonicalTermsAndDependenciesRead": true,
+      "escrowGEN": "0",
+      "noIllegalWriteControl": true
+    },
+    {
+      "route": "/agreements/demo-unclear-v1",
+      "canonicalTermsAndDependenciesRead": true,
+      "escrowGEN": "0",
+      "noIllegalWriteControl": true
+    },
+    {
+      "route": "/activity",
+      "canonicalEvents": 23
+    }
+  ],
+  "passed": true
+}

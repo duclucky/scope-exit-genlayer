@@ -19,11 +19,12 @@ def allowed(path):
     if any(x in {".codex", ".venv", "node_modules", "dist", "source-notes", "research", "references", "templates"} for x in p.parts):
         return False
     return (p.parts[0] in {"contracts", "tests", "scripts", "docs", "frontend", ".github"}
-            or path in {".gitignore", ".gitattributes", ".env.example", "README.md", "requirements.txt", "gltest.config.yaml", "package.json", "package-lock.json"})
+            or path in {".gitignore", ".gitattributes", ".vercelignore", ".env.example", "README.md", "requirements.txt", "gltest.config.yaml", "package.json", "package-lock.json"})
 bad = [p for p in paths + staged if not allowed(p)]
 assert not bad, "Public path allowlist rejected a file"
 secrets = []
-for env_path in (root / ".env", root.parent / ".env"):
+env_paths = [root / ".env", root.parent / ".env", root / ".env.local", root / "frontend/.env", root / "frontend/.env.local"]
+for env_path in env_paths:
     if env_path.exists():
         secrets.extend(value for key, value in dotenv_values(env_path).items()
                        if value and len(value) >= 16 and any(x in key.upper() for x in ("PRIVATE", "SECRET", "TOKEN", "PASSWORD", "API_KEY")))

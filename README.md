@@ -2,7 +2,7 @@
 
 ScopeExit is a GenLayer project for purchasing two conditional permissions, cancelling their dependent unused parts, and keeping independent rights with exact GEN accounting.
 
-Status: implemented and locally verified, with a deployed Studio Dev contract and three finalized native-GEN lifecycles. Actual browser canonical reads are verified. Browser-wallet signing, public hosting, CI, adoption and submission evidence remain pending.
+Status: implemented and locally verified, with a deployed Studio Dev contract, three finalized native-GEN lifecycles, public production hosting and successful CI. Actual browser canonical reads are verified locally and in production. Browser-wallet signing, adoption and submission evidence remain pending.
 
 The issuer and buyer ratify exact terms for protocol-created rights. GenLayer validators interpret the semantic prerequisites; deterministic code governs cancellation, one-time exercise, fixed refunds and withdrawals. Each component costs 1 GEN; the purchase costs 2 GEN. These permissions do not prove external delivery, ownership or legal enforceability.
 
@@ -24,13 +24,32 @@ The deployed source is commit `9e5de0c122f27967c735034bd73dc67961bbe6cb`, pinned
 
 ## Verification
 
-`npm run check` currently passes GenVM lint, 74 direct Python tests, one three-validator GLSim integration, five Node tooling tests, 28 frontend tests, TypeScript and the production build, with no skipped tests. Simulator behavior is distinct from actual Studio Dev execution and extension signing.
+`npm run check` currently passes GenVM lint, 74 direct Python tests, one three-validator GLSim integration, six Node tooling tests, 30 frontend tests, TypeScript and the production build, with no skipped tests. Simulator behavior is distinct from actual Studio Dev execution and extension signing.
 
 [Browser read proof](docs/evidence/local/frontend/state-review.json) checks actual deployed agreement views, results, and canonical history through the same-origin IC proxy. The app includes seven routes, detected-wallet selection, logout and all nine write wrappers; real extension signing evidence remains pending.
 
 ## Live App
 
-Production hosting has not yet been verified. Run the local app with the deployed address to inspect canonical state; do not treat a local URL as public hosting evidence.
+[ScopeExit](https://scope-exit-genlayer.vercel.app). HTTP 200, the ScopeExit HTML title and React root were verified with `curl.exe`. [Production browser proof](docs/evidence/studio-dev/frontend-production/state-review.json) reads the four finalized agreements and canonical history; [RPC proof](docs/evidence/studio-dev/frontend-production/rpc-review.json) verifies both browser proxy paths. Read proof is distinct from extension-signed writes.
+
+[Public repository](https://github.com/duclucky/scope-exit-genlayer) and [successful CI for commit 23cf40a](https://github.com/duclucky/scope-exit-genlayer/actions/runs/37605258032). Later documentation commits require their own current-commit CI before submission readiness.
+
+## Architecture and deployment
+
+One `ScopeExit` Intelligent Contract owns immutable ratified terms, semantic review, rights, escrow and credits. The selected EVM extension signs transactions through the Studio Dev wallet path. Canonical Intelligent Contract reads and fee estimation use separate same-origin proxy routes. Seven frontend routes cover offer creation, purchase and review, partial cancellation, exercise, recovery, withdrawals and history.
+
+For a fresh authorized Studio Dev deployment:
+
+1. Install the pinned Python 3.12 requirements and root/frontend npm dependencies, then run `npm run check`.
+2. Discover signing configuration from the ignored project `.env`, then the authorized parent `.env`. Never print or place keys in frontend environment variables.
+3. Run `node scripts/runtime_smoke.mjs`, commit the contract source, and run `node scripts/studio.mjs inspect` before signing.
+4. Run `node scripts/studio.mjs deploy` and `node scripts/studio.mjs zero-smoke`. Verify finalized successful execution, policy and sole payable purchase metadata.
+5. Run `node scripts/studio.mjs lifecycle dependent`, `independent` and `unclear`. The unclear case waits for its immutable expiry; rerun after expiry to resume recovery. Commands reuse finalized attempts and never replay an ambiguous submission.
+6. Write the returned public address into ignored `frontend/.env` as `VITE_CONTRACT_ADDRESS`, then run the frontend and production build. Use the detected-wallet picker and sign only after reading the exact terms.
+
+The checked-in evidence belongs to the active address above. A new revision needs its own source/network identity and receipts; the unsigned runtime smoke is not a deployment or transfer.
+
+One-line pitch: Cancel dependent unused permissions, recover their GEN, and keep the rights that stand on their own through GenLayer semantic consensus.
 
 ## Limits
 

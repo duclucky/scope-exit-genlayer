@@ -1,0 +1,20 @@
+{
+  "command": "vercel deploy --prod --yes --cwd frontend --project scope-exit-genlayer",
+  "deploymentId": "dpl_F3ypHu3qvKXMM4RAaXDaerQLY7mR",
+  "readyState": "READY",
+  "target": "production",
+  "url": "https://scope-exit-genlayer.vercel.app",
+  "rootLocalDirectory": "frontend",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "publicContractAddress": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
+  "httpVerification": {
+    "commands": ["curl.exe -I https://scope-exit-genlayer.vercel.app", "curl.exe -s https://scope-exit-genlayer.vercel.app"],
+    "status": "HTTP/1.1 200 OK",
+    "htmlTitle": "ScopeExit — keep what stands on its own",
+    "reactRoot": "<div id=\"root\"></div>",
+    "verifiedAt": "2026-10-07T10:09:03Z"
+  },
+  "limitations": "Canonical browser reads are verified separately. No extension signing proof is implied by hosting."
+}

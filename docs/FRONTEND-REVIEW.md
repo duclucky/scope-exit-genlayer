@@ -12,4 +12,8 @@ Findings corrected before moving on: duplicate injected/EIP-6963 provider entrie
 
 Visibility review: primary pages expose terms, participant roles, expiry, eligible actions and user outcomes. Digests and transaction references sit in disclosure panels; validator/configuration/audit internals do not occupy the product surface. Illustrative landing permissions are explicitly labeled examples and never enter agreement state.
 
-Limits: no deployed-contract/RPC proof, browser-wallet transaction lifecycle, GEN transfer, external consumer enforcement or adoption is claimed. Those are separate acceptance gates.
+Historical baseline limits: the Phase 3B review did not prove deployed RPC, wallet signing or transfers. It remains preserved as baseline evidence.
+
+Integration review: `npm run check` now passes 30 frontend tests including all nine methods through the actual SDK, role/state controls, exact purchase GEN, finality, canonical reload and safe failure guidance. `node scripts/browser-rpc-review.mjs` proves both same-origin paths return HTTP 200 and chain 61997 in an actual browser. `node scripts/browser-state-review.mjs` reads four finalized agreements, three canonical result details and 23 historical events, with zero page errors. The same commands against the verified production URL also pass; evidence is in `evidence/studio-dev/frontend-production/`.
+
+Chrome MetaMask is connected to the authorized issuer account. Actual extension-signed lifecycle evidence remains pending. Script-signed native transfers are separately recorded and do not substitute for browser writes. No external consumer enforcement or adoption is claimed.

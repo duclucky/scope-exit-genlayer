@@ -5,7 +5,7 @@ import { isAddress, getAddress, formatUnits } from 'viem';
 import { ConfigurationError } from './adapter';
 import type { Agreement, Activity, ContractAdapter, TransactionProgress } from './adapter';
 import type { EVMProvider } from './wallet';
-import { ensureStudioNetwork, IC_RPC, WALLET_RPC, studioChain } from './network';
+import { ensureStudioNetwork, WalletNetworkError, IC_RPC, WALLET_RPC, studioChain } from './network';
 import { executionResult } from './receipt.mjs';
 
 export interface AdapterConfig { address?: string; account?: string; provider?: EVMProvider; icRPC?: string; walletRPC?: string }
@@ -79,8 +79,10 @@ export function createSDKAdapter(config: AdapterConfig): ContractAdapter {
       const value = BigInt(valueGEN) * 10n ** 18n;
       const args = rawArgs as CalldataEncodable[];
       let hash: TransactionHash | undefined;
+      let step: 'network' | 'account' | 'estimate' | 'signing' | 'confirmation' | 'reload' = 'network';
       try {
         await ensureStudioNetwork(config.provider);
+        step = 'account';
         const accounts = await config.provider.request({ method: 'eth_accounts' });
         if (!Array.isArray(accounts) || typeof accounts[0] !== 'string' || accounts[0].toLowerCase() !== config.account.toLowerCase()) throw new Error('The selected wallet account changed. Reconnect before signing.');
         const selected = config.provider;
@@ -93,21 +95,26 @@ export function createSDKAdapter(config: AdapterConfig): ContractAdapter {
           }
           return result;
         } } });
+        step = 'estimate';
         const fees = await writer.estimateTransactionFeesForWrite({ address, functionName: method, args, value, transactionHashVariant: TransactionHashVariant.LATEST_FINAL });
         progress({ stage: 'signing', message: `Review ${valueGEN} GEN and the network fee budget of ${formatUnits(fees.feeValue, 18)} GEN in your selected wallet.` });
+        step = 'signing';
         const submitted = await writer.writeContract({ address, functionName: method, args, value, fees: { distribution: fees.distribution, feeValue: fees.feeValue, messageAllocations: fees.messageAllocations } });
         if (hash !== submitted) progress({ stage: 'submitted', hash: submitted, message: 'Transaction submitted. Waiting for an accepted decision.' });
         hash = submitted;
+        step = 'confirmation';
         const accepted = await reader.waitForTransactionReceipt({ hash: hash!, waitUntil: 'decided', interval: 1500, retries: 120 });
         if (!successfulExecution(accepted)) throw new Error('The accepted execution was unsuccessful.');
         progress({ stage: 'accepted', hash, message: 'The decision is accepted. Finalization and canonical reload are still pending.' });
         const finalized = await reader.waitForTransactionReceipt({ hash: hash!, waitUntil: 'finalized', interval: 1500, retries: 160 });
         if (!successfulExecution(finalized)) throw new Error('Finalized execution was unsuccessful.');
         // Read the finalized owning entity before reporting completion.
+        step = 'reload';
         const fresh = await getAgreement(String(rawArgs[0]));
         progress({ stage: 'finalized', hash, message: fresh.phase === 'RETRYABLE' ? 'Review could not establish clear dependencies. Escrow is unchanged. Retry within the attempt limit or recover unused funds after expiry.' : 'Successful finalization confirmed. The latest agreement state has been reloaded.' });
-      } catch {
-        const update: TransactionProgress = { stage: 'failed', hash, message: hash ? 'Confirmation is incomplete. Refresh canonical state and inspect this transaction before sending it again.' : 'The wallet action was not completed. Check the selected account and Studio Dev connection.' };
+      } catch (error) {
+        const messages = { network: 'Studio Dev network verification was not completed. Check your selected wallet network.', account: 'The selected wallet account could not be verified. Reconnect the account shown in the app.', estimate: 'The Studio Dev fee estimate could not be completed. No signing request was sent; refresh and try again.', signing: 'The wallet signing request was not completed. Check your selected wallet and its request.', confirmation: 'Transaction confirmation is incomplete. Refresh canonical state before retrying.', reload: 'The finalized agreement could not be reloaded. Refresh canonical state before retrying.' };
+        const update: TransactionProgress = { stage: 'failed', hash, message: hash ? 'Confirmation is incomplete. Refresh canonical state and inspect this transaction before sending it again.' : error instanceof WalletNetworkError ? error.message : messages[step] };
         progress(update);
         throw new Error(update.message);
       }

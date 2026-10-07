@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-07T10:09:33.910Z",
+  "base": "https://scope-exit-genlayer.vercel.app/",
+  "mode": "ACTUAL_BROWSER_RPC_READ",
+  "noWallet": true,
+  "noTransaction": true,
+  "results": [
+    {
+      "path": "/api/ic-rpc",
+      "http": 200,
+      "chainIdMatches": true,
+      "browserFetchSucceeded": true
+    },
+    {
+      "path": "/api/wallet-rpc",
+      "http": 200,
+      "chainIdMatches": true,
+      "browserFetchSucceeded": true
+    }
+  ],
+  "passed": true
+}

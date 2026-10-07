@@ -4,7 +4,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 const base = process.env.FRONTEND_REVIEW_URL ?? 'http://127.0.0.1:5178/';
-const out = new URL('../docs/evidence/local/frontend/', import.meta.url);
+const out = new URL(process.env.FRONTEND_REVIEW_OUTPUT ?? '../docs/evidence/local/frontend/', import.meta.url);
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const results = [], errors = [];
 try {

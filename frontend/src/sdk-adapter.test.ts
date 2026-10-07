@@ -54,6 +54,19 @@ function offline() {
 }
 
 describe('actual project adapter through the real SDK, intercepted I/O only', () => {
+  it('reports a safe fee-estimate failure before asking the wallet to sign', async () => {
+    const io = offline();
+    const fetchRPC = globalThis.fetch;
+    vi.stubGlobal('fetch', vi.fn(async (url: string, options: RequestInit) => {
+      const request = JSON.parse(String(options.body));
+      if (request.method === 'sim_estimateTransactionFees') return new Response(JSON.stringify({ jsonrpc: '2.0', id: request.id, error: { code: -32000, message: 'PRIVATE_VALIDATOR_PAYLOAD' } }));
+      return fetchRPC(url, options);
+    }));
+    const progress: TransactionProgress[] = [];
+    await expect(createSDKAdapter({ address: contract, account: sender, provider: io.provider, walletRPC: 'https://wallet.offline.invalid' }).write('create_offer', ['fixture'], '0', p => progress.push(p))).rejects.toThrow('fee estimate');
+    expect(io.sends).toHaveLength(0);
+    expect(JSON.stringify(progress)).not.toContain('PRIVATE_VALIDATOR_PAYLOAD');
+  });
   it.each(['create_offer', 'accept_offer', 'review_dependencies', 'exit_component', 'consume_component', 'recover_expired', 'withdraw', 'cancel_offer', 'close'] as WriteMethod[])('%s binds caller, target, GEN, finality and finalized reload', async method => {
     const io = offline();
     const adapter = createSDKAdapter({ address: contract, account: sender, provider: io.provider, icRPC: 'https://ic.offline.invalid', walletRPC: 'https://wallet.offline.invalid' });
@@ -108,4 +121,8 @@ it('adds only the verified chain after unknown-chain error, then verifies switch
   } };
   await ensureStudioNetwork(provider);
   expect(calls).toEqual(['eth_chainId', 'wallet_switchEthereumChain', 'wallet_addEthereumChain', 'wallet_switchEthereumChain', 'eth_chainId']);
+});
+
+it('explains a pending wallet network request without exposing provider payloads', async () => {
+  await expect(ensureStudioNetwork({ request: async () => { throw { code: -32002, message: 'PRIVATE_WALLET_PAYLOAD' }; } })).rejects.toThrow('already pending');
 });

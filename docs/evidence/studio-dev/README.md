@@ -11,6 +11,10 @@ finalized deployment hash. `runtime-smoke.json` is an **unsigned simulation**,
 not a submitted deployment. `zero-value-smoke.json` checks the deployed schema
 and a real unfunded create/cancel/close cycle before value is sent.
 
+Deployment Result: SUCCESS; Status: FINALIZED. The exact deployment hash is
+`0x0e835e7637327a287ecc1d141d514e7e03581740f1876e901a88b5f6a228a8ef`.
+This statement is supported by the projected deploy receipt in `attempts.json`.
+
 `attempts.json` contains only public actors, action inputs, GEN amounts, quoted
 fee budgets, transaction hashes, projected status/execution results, canonical
 reads and transfer proofs. No raw receipts, stdout, stderr, traces or validator
