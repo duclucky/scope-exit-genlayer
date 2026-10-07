@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-07T10:53:44.368Z",
+  "command": "node scripts/browser-evidence.mjs sx-ddc3df46 0x52b386583f0c7f5b3d5be3eeb0733de1151010cb0b48ceb57ccf1fa810d2e343",
+  "network": "studio-dev",
+  "chainId": 61997,
+  "contractAddress": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
+  "sourceCommit": "9e5de0c122f27967c735034bd73dc67961bbe6cb",
+  "sourceHash": "e8d24d9417e2214839568e156f270d67a1ecb9a1d432b7dd79fe081c9cd6359e",
+  "receipt": {
+    "hash": "0x52b386583f0c7f5b3d5be3eeb0733de1151010cb0b48ceb57ccf1fa810d2e343",
+    "status": "FINALIZED",
+    "executionResult": "SUCCESS",
+    "contractAddress": null,
+    "actor": "0xC495ef51618D03267A1f227aFe5b27B38c748272",
+    "target": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
+    "method": "create_offer",
+    "agreementId": "sx-ddc3df46",
+    "calldataBindingProven": true
+  },
+  "agreement": {
+    "attempt": 0,
+    "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+    "buyerCreditGEN": "0",
+    "dependencies": null,
+    "digest": "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895",
+    "escrowGEN": "0",
+    "expiry": 1791396000,
+    "id": "sx-ddc3df46",
+    "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+    "issuerCreditGEN": "0",
+    "permissions": [
+      {
+        "id": "A",
+        "status": "LOCKED",
+        "terms": "The named buyer may analyse the registered record independently of export permission B.",
+        "title": "Analysis"
+      },
+      {
+        "id": "B",
+        "status": "LOCKED",
+        "terms": "The named buyer may export the registered record independently of analysis permission A.",
+        "title": "Export"
+      }
+    ],
+    "phase": "OFFERED",
+    "receivedGEN": "0",
+    "title": "Browser independent permission bundle",
+    "withdrawnGEN": "0"
+  },
+  "history": [
+    {
+      "action": "OFFER_CREATED",
+      "actor": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+      "agreementId": "sx-ddc3df46",
+      "at": 1791369608,
+      "id": "sx-ddc3df46:0",
+      "title": "Browser independent permission bundle"
+    }
+  ],
+  "hashSource": "Observed transaction link on official Explorer or frontend",
+  "noSignedWrites": true
+}

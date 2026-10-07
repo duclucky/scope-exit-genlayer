@@ -2434,6 +2434,469 @@
         }
       },
       "afterActorGEN": "34.28152799533282749"
+    },
+    "browser-sx-ddc3df46-purchase": {
+      "actor": "0x45aD397c438397A702B53a7499a78D08961D39Db",
+      "role": "buyer",
+      "method": "accept_offer",
+      "args": [
+        "sx-ddc3df46",
+        "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895"
+      ],
+      "valueGEN": "2",
+      "feeBudgetGEN": "0.000378507600010352",
+      "beforeActorGEN": "31.655633178166611905",
+      "beforeContractGEN": "0",
+      "canonical": {
+        "before": {
+          "at": "2026-10-07T10:54:15.278Z",
+          "agreement": {
+            "attempt": 0,
+            "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+            "buyerCreditGEN": "0",
+            "dependencies": null,
+            "digest": "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895",
+            "escrowGEN": "0",
+            "expiry": 1791396000,
+            "id": "sx-ddc3df46",
+            "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "LOCKED",
+                "terms": "The named buyer may analyse the registered record independently of export permission B.",
+                "title": "Analysis"
+              },
+              {
+                "id": "B",
+                "status": "LOCKED",
+                "terms": "The named buyer may export the registered record independently of analysis permission A.",
+                "title": "Export"
+              }
+            ],
+            "phase": "OFFERED",
+            "receivedGEN": "0",
+            "title": "Browser independent permission bundle",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "0",
+            "receivedGEN": "6",
+            "withdrawnGEN": "6"
+          },
+          "contractBalanceGEN": "0"
+        },
+        "after": {
+          "at": "2026-10-07T10:54:57.901Z",
+          "agreement": {
+            "attempt": 0,
+            "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+            "buyerCreditGEN": "0",
+            "dependencies": null,
+            "digest": "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895",
+            "escrowGEN": "2",
+            "expiry": 1791396000,
+            "id": "sx-ddc3df46",
+            "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "LOCKED",
+                "terms": "The named buyer may analyse the registered record independently of export permission B.",
+                "title": "Analysis"
+              },
+              {
+                "id": "B",
+                "status": "LOCKED",
+                "terms": "The named buyer may export the registered record independently of analysis permission A.",
+                "title": "Export"
+              }
+            ],
+            "phase": "FUNDED",
+            "receivedGEN": "2",
+            "title": "Browser independent permission bundle",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "2",
+            "receivedGEN": "8",
+            "withdrawnGEN": "6"
+          },
+          "contractBalanceGEN": "2"
+        }
+      },
+      "startedAt": "2026-10-07T10:54:20.507Z",
+      "stage": "FINALIZED",
+      "hash": "0xef4d7346ab560c3707d21b42b94e2d42d8ecd2e89314a3ac85de2380093d5001",
+      "receipt": {
+        "hash": "0xef4d7346ab560c3707d21b42b94e2d42d8ecd2e89314a3ac85de2380093d5001",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-07T10:54:57.898Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0xef4d7346ab560c3707d21b42b94e2d42d8ecd2e89314a3ac85de2380093d5001"
+      },
+      "afterActorGEN": "29.655554546416611082"
+    },
+    "browser-sx-ddc3df46-exit": {
+      "actor": "0x45aD397c438397A702B53a7499a78D08961D39Db",
+      "role": "buyer",
+      "method": "exit_component",
+      "args": [
+        "sx-ddc3df46",
+        "A"
+      ],
+      "valueGEN": "0",
+      "feeBudgetGEN": "0.000378506400010352",
+      "beforeActorGEN": "29.655554546416611082",
+      "beforeContractGEN": "2",
+      "canonical": {
+        "before": {
+          "at": "2026-10-07T10:58:09.878Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+            "buyerCreditGEN": "0",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895",
+            "escrowGEN": "2",
+            "expiry": 1791396000,
+            "id": "sx-ddc3df46",
+            "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "ACTIVE",
+                "terms": "The named buyer may analyse the registered record independently of export permission B.",
+                "title": "Analysis"
+              },
+              {
+                "id": "B",
+                "status": "ACTIVE",
+                "terms": "The named buyer may export the registered record independently of analysis permission A.",
+                "title": "Export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Browser independent permission bundle",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "2",
+            "receivedGEN": "8",
+            "withdrawnGEN": "6"
+          },
+          "contractBalanceGEN": "2"
+        },
+        "after": {
+          "at": "2026-10-07T10:58:53.112Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+            "buyerCreditGEN": "1",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895",
+            "escrowGEN": "1",
+            "expiry": 1791396000,
+            "id": "sx-ddc3df46",
+            "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered record independently of export permission B.",
+                "title": "Analysis"
+              },
+              {
+                "id": "B",
+                "status": "ACTIVE",
+                "terms": "The named buyer may export the registered record independently of analysis permission A.",
+                "title": "Export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Browser independent permission bundle",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "1",
+            "escrowGEN": "1",
+            "receivedGEN": "8",
+            "withdrawnGEN": "6"
+          },
+          "contractBalanceGEN": "2"
+        }
+      },
+      "startedAt": "2026-10-07T10:58:15.018Z",
+      "stage": "FINALIZED",
+      "hash": "0x15e279004c63722e157fe99068ee0a6bcfb3bdf227238e5e5da4cbfdf0c254a4",
+      "receipt": {
+        "hash": "0x15e279004c63722e157fe99068ee0a6bcfb3bdf227238e5e5da4cbfdf0c254a4",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-07T10:58:53.109Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0x15e279004c63722e157fe99068ee0a6bcfb3bdf227238e5e5da4cbfdf0c254a4"
+      },
+      "afterActorGEN": "29.655475914916610259"
+    },
+    "browser-sx-ddc3df46-consume": {
+      "actor": "0x45aD397c438397A702B53a7499a78D08961D39Db",
+      "role": "buyer",
+      "method": "consume_component",
+      "args": [
+        "sx-ddc3df46",
+        "B"
+      ],
+      "valueGEN": "0",
+      "feeBudgetGEN": "0.000378512400010352",
+      "beforeActorGEN": "29.655475914916610259",
+      "beforeContractGEN": "2",
+      "canonical": {
+        "before": {
+          "at": "2026-10-07T10:58:56.485Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+            "buyerCreditGEN": "1",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895",
+            "escrowGEN": "1",
+            "expiry": 1791396000,
+            "id": "sx-ddc3df46",
+            "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered record independently of export permission B.",
+                "title": "Analysis"
+              },
+              {
+                "id": "B",
+                "status": "ACTIVE",
+                "terms": "The named buyer may export the registered record independently of analysis permission A.",
+                "title": "Export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Browser independent permission bundle",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "1",
+            "escrowGEN": "1",
+            "receivedGEN": "8",
+            "withdrawnGEN": "6"
+          },
+          "contractBalanceGEN": "2"
+        },
+        "after": {
+          "at": "2026-10-07T10:59:40.104Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+            "buyerCreditGEN": "1",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895",
+            "escrowGEN": "0",
+            "expiry": 1791396000,
+            "id": "sx-ddc3df46",
+            "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "issuerCreditGEN": "1",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered record independently of export permission B.",
+                "title": "Analysis"
+              },
+              {
+                "id": "B",
+                "status": "CONSUMED",
+                "terms": "The named buyer may export the registered record independently of analysis permission A.",
+                "title": "Export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Browser independent permission bundle",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "2",
+            "escrowGEN": "0",
+            "receivedGEN": "8",
+            "withdrawnGEN": "6"
+          },
+          "contractBalanceGEN": "2"
+        }
+      },
+      "startedAt": "2026-10-07T10:59:03.003Z",
+      "stage": "FINALIZED",
+      "hash": "0xba044d8f6aaaf887a6fa32ae5fe477b7934225d95ff51b02264bad989a05168c",
+      "receipt": {
+        "hash": "0xba044d8f6aaaf887a6fa32ae5fe477b7934225d95ff51b02264bad989a05168c",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-07T10:59:40.101Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0xba044d8f6aaaf887a6fa32ae5fe477b7934225d95ff51b02264bad989a05168c"
+      },
+      "afterActorGEN": "29.655397282166609436"
+    },
+    "browser-sx-ddc3df46-refund": {
+      "actor": "0x45aD397c438397A702B53a7499a78D08961D39Db",
+      "role": "buyer",
+      "method": "withdraw",
+      "args": [
+        "sx-ddc3df46"
+      ],
+      "valueGEN": "0",
+      "feeBudgetGEN": "0.000759807600010352",
+      "beforeActorGEN": "29.655397282166609436",
+      "beforeContractGEN": "2",
+      "canonical": {
+        "before": {
+          "at": "2026-10-07T11:01:21.769Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+            "buyerCreditGEN": "1",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895",
+            "escrowGEN": "0",
+            "expiry": 1791396000,
+            "id": "sx-ddc3df46",
+            "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "issuerCreditGEN": "1",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered record independently of export permission B.",
+                "title": "Analysis"
+              },
+              {
+                "id": "B",
+                "status": "CONSUMED",
+                "terms": "The named buyer may export the registered record independently of analysis permission A.",
+                "title": "Export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Browser independent permission bundle",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "2",
+            "escrowGEN": "0",
+            "receivedGEN": "8",
+            "withdrawnGEN": "6"
+          },
+          "contractBalanceGEN": "2"
+        },
+        "after": {
+          "at": "2026-10-07T11:02:09.111Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+            "buyerCreditGEN": "0",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895",
+            "escrowGEN": "0",
+            "expiry": 1791396000,
+            "id": "sx-ddc3df46",
+            "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "issuerCreditGEN": "1",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered record independently of export permission B.",
+                "title": "Analysis"
+              },
+              {
+                "id": "B",
+                "status": "CONSUMED",
+                "terms": "The named buyer may export the registered record independently of analysis permission A.",
+                "title": "Export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Browser independent permission bundle",
+            "withdrawnGEN": "1"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "1",
+            "escrowGEN": "0",
+            "receivedGEN": "8",
+            "withdrawnGEN": "7"
+          },
+          "contractBalanceGEN": "1"
+        }
+      },
+      "startedAt": "2026-10-07T11:01:28.222Z",
+      "stage": "FINALIZED",
+      "hash": "0xf2f4645fa063dd7cdecc7d8466339a685f6d948c3af83017bce12b9022a43d8f",
+      "receipt": {
+        "hash": "0xf2f4645fa063dd7cdecc7d8466339a685f6d948c3af83017bce12b9022a43d8f",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-07T11:02:09.108Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0xf2f4645fa063dd7cdecc7d8466339a685f6d948c3af83017bce12b9022a43d8f"
+      },
+      "afterActorGEN": "30.655270974916608613",
+      "transferProof": {
+        "expectedGEN": "1",
+        "exactContractDecreaseGEN": "1",
+        "recipientNetIncreaseGEN": "0.999873692749999177",
+        "observedNetTransactionCostGEN": "0.000126307250000823",
+        "nativeMessageBound": true,
+        "recipient": "0x45aD397c438397A702B53a7499a78D08961D39Db",
+        "zeroCredit": true,
+        "proven": true
+      }
     }
   },
   "zeroValueSmokePassed": true,

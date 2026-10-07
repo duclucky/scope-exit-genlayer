@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-07T11:04:28.510Z",
+  "network": "studio-dev",
+  "chainId": 61997,
+  "contractAddress": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
+  "recipient": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+  "agreement": {
+    "attempt": 1,
+    "buyer": "0x45ad397c438397a702b53a7499a78d08961d39db",
+    "buyerCreditGEN": "0",
+    "dependencies": [
+      "INDEPENDENT",
+      "INDEPENDENT"
+    ],
+    "digest": "ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895",
+    "escrowGEN": "0",
+    "expiry": 1791396000,
+    "id": "sx-ddc3df46",
+    "issuer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+    "issuerCreditGEN": "1",
+    "permissions": [
+      {
+        "id": "A",
+        "status": "CANCELLED",
+        "terms": "The named buyer may analyse the registered record independently of export permission B.",
+        "title": "Analysis"
+      },
+      {
+        "id": "B",
+        "status": "CONSUMED",
+        "terms": "The named buyer may export the registered record independently of analysis permission A.",
+        "title": "Export"
+      }
+    ],
+    "phase": "REVIEWED",
+    "receivedGEN": "2",
+    "title": "Browser independent permission bundle",
+    "withdrawnGEN": "1"
+  },
+  "contractBalanceGEN": "1",
+  "recipientBalanceGEN": "34.281370510582825844"
+}

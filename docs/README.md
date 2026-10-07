@@ -1,6 +1,6 @@
 # ScopeExit product specification
 
-The category is locked to Projects. This specification preserves the Phase 4 design and its originally pending evidence plan. The executed trace below records the current verified state; those completed proofs supersede the historical pending entries. Successful extension-signed workflow evidence remains pending.
+The category is locked to Projects. This specification preserves the Phase 4 design and its originally pending evidence plan. The executed trace below records the current verified state; those completed proofs supersede the historical pending entries. MetaMask publication, semantic review, issuer withdrawal and closure are finalized successfully. Buyer counterpart actions are explicitly script-signed; see BROWSER-EVIDENCE.md.
 
 ## Identity
 
@@ -8,7 +8,7 @@ The category is locked to Projects. This specification preserves the Phase 4 des
 - Project name: ScopeExit
 - Project slug: scope-exit
 - Category: Projects
-- Status: BUILDING; fourteen admission gates pass; signed contract execution verified; browser-wallet execution pending
+- Status: BUILDING; fourteen admission gates pass; signed contract execution verified; browser publication/review verified; browser issuer withdrawal/closure verified; full buyer-extension execution unclaimed
 - Repository: https://github.com/duclucky/scope-exit-genlayer (public)
 - Target network: Studio Dev, chain 61997; active address and exact evidence linked in project README
 
@@ -52,7 +52,7 @@ An issuer offers two named internal permission components A and B to a named buy
 | Contract count | PASS_ADMISSION | One ScopeExit Intelligent Contract; recipient EVM interface is not a second deployed IC. |
 | Differentiation | PASS_ADMISSION | Partial purchased-rights unwind differs in question/state/consequence/interface from closest registry mechanisms. |
 | Claim-to-code | PASS_ADMISSION | Every claim maps to write, canonical view, negative test and explicit pending network evidence. |
-| Full lifecycle | PASS_ADMISSION / CONTRACT_EXECUTION_PASS / BROWSER_PENDING | Three real finalized lifecycles and four native withdrawals close with zero liabilities; actual extension-signed user workflow remains pending. Admission is distinct from execution. |
+| Full lifecycle | PASS_ADMISSION / CONTRACT_EXECUTION_PASS / BROWSER_ISSUER_PASS | Four funded cases and six native withdrawals end with zero liabilities. Issuer create/review/withdraw/close is extension-signed; buyer counterpart is script-signed. All-nine-action extension proof is unclaimed. Admission is distinct from execution. |
 | Scope honesty | PASS_ADMISSION | Protocol rights/GEN only; no outside ownership, delivery, automatic consumer enforcement or adoption claims. |
 
 ## Actors, roles and incentives
@@ -218,7 +218,7 @@ Duplicates revert without state/accounting changes. IDs, funded state, locked ma
 
 ## Frontend lifecycle coverage matrix
 
-Every write follows the shared typed `ContractAdapter.write` boundary, TransactionBox feedback and canonical `revision` reload after finalized successful execution. The actual SDK and deployed address are now configured and tested; the matrix below preserves the Phase 4 evidence plan. Actual local and production browser canonical reads pass, while no successful extension-signed transaction is claimed yet.
+Every write follows the shared typed `ContractAdapter.write` boundary, TransactionBox feedback and canonical `revision` reload after finalized successful execution. The actual SDK and deployed address are now configured and tested; the matrix below preserves the Phase 4 evidence plan. Actual local and production browser canonical reads pass, with actual extension-signed issuer publication, review, withdrawal and closure now proven separately.
 
 | Canonical state | User action | Contract write | UI component | Frontend test | Evidence status |
 | --- | --- | --- | --- | --- | --- |
@@ -448,7 +448,7 @@ The following current proof supersedes the originally pending network cells abov
 | Exact cancellation / surviving one-time exercise | Contract computes closure and fixed slices; no model payee/amount/class prose accepted | Full/partial/reverse closure, consumed-dependant prohibition, inactive prerequisite, duplicate/caller/state/time negatives | Dependent 2 GEN refund; independent A refund 1 GEN and B consumed for issuer 1 GEN; canonical before/after snapshots in attempts |
 | Non-penalizing ambiguity and expiry recovery | Retry changes only permitted review record; `recover_expired` independently enforces equality/late clock and fixed buyer destination | Stale-phase boundary triples, attempt cap, no-escrow duplicate, unauthorized and accounting snapshots | Unclear MODEL_UNCLEAR kept 2 GEN escrow; observer expiry recovery returned both unused slices to locked buyer |
 | Native transfer and closure | Credit debited before EVM recipient emit; only terminal rights and zero escrow/credits may close | `test_credit_debit_precedes_locked_recipient_emit_and_close`, duplicate/value/state/metadata/receipt tests | Four `transferProof.proven:true` entries: exact 2/1/1/2 GEN contract decreases and fee-aware recipient increases; all CLOSED; global 6 GEN received/withdrawn, liabilities/native balance zero |
-| Browser product / reusable interface | Selected-provider SDK account configuration, EVM chain preflight, separate IC reads, all nine wrappers/control/tests/finality/reload | `wallet.test.ts`, `sdk-adapter.test.ts`, `lifecycle-ui.test.tsx`; actual browser proxy/read commands | Seven functional routes, MetaMask/OKX detection, connected issuer; local and production actual canonical reads PASS. MetaMask write currently fails network preflight before hash; successful browser writes PENDING |
+| Browser product / reusable interface | Selected-provider SDK account configuration, EVM chain preflight, separate IC reads, all nine wrappers/control/tests/finality/reload | `wallet.test.ts`, `sdk-adapter.test.ts`, `lifecycle-ui.test.tsx`; actual browser proxy/read commands | Seven routes, MetaMask/OKX detection, local/production canonical reads PASS. `browser-sx-ddc3df46-create_offer.json` and `browser-sx-ddc3df46-review_dependencies.json` prove owner-operated extension signing, FINALIZED/SUCCESS, calldata identity binding and canonical reload. Buyer counterpart uses authorized scripts; issuer withdrawal/closure are separately proven in BROWSER-EVIDENCE.md with an exact 1 GEN native decrease and CLOSED view. |
 
 Proposed consumers and milestone headroom remain design claims. No outside delivery, ownership, legal enforceability, autonomous consumer enforcement or adoption is claimed.
 
@@ -461,24 +461,24 @@ Proposed consumers and milestone headroom remain design claims. No outside deliv
 - [x] One ASCII pinned-runtime recognized contract, production semantic validator and source/settlement checks implemented and linted.
 - [x] All direct/gltest/adversarial/temporal/accounting/metadata/parser/SDK tests and required npm run check pass.
 - [x] Actual finalized Studio Dev judgment -> rights/money consequence -> recovery/withdrawal -> zero-liability closure; sanitized canonical/native transfer proof.
-- [ ] Category remains Projects; actual public repository, CI, hosting, live verification and truthful documentation.
+- [x] Category remains Projects; actual public repository, CI, hosting and live verification. Latest evidence documentation is checked against the final public commit before submission.
 
 ### Projects
 
-- [ ] Real frontend wallet writes for every claimed lifecycle step, provider chooser and logout, verified EVM chain, separate IC read path/proxy and real SDK account regression.
-- [ ] Submitted, accepted/decided, finalized successful, failed and retry feedback; canonical reads after finalization.
-- [ ] Meaningful buyer partial unwind/surviving exercise and issuer earnings; every required step has wrapper/control/test/evidence.
-- [ ] Browser-local RPC/CORS verification; actual extension wallet signed lifecycle evidence distinct from scripts.
+- [x] All nine lifecycle steps have real frontend wrappers, controls, tests, finality handling and canonical reload; provider chooser/logout, EVM chain and proxy verified. Observed extension signing covers the complete issuer path; other live extension actions are explicitly unclaimed (BROWSER-EVIDENCE.md).
+- [x] Submitted, accepted/decided, finalized successful, failed and retry feedback; canonical reads after finalization. Actual browser review Confirmed and reloaded; failed wallet preflight retains safe retry guidance; adapter regressions cover intermediate states.
+- [x] Meaningful buyer partial unwind/surviving exercise and issuer earnings; all required wrappers/control/tests exist. Live counterpart script evidence and issuer browser evidence have separate labels.
+- [x] Browser-local RPC/CORS verification; actual extension wallet signed issuer lifecycle evidence distinct from buyer script counterparts (BROWSER-EVIDENCE.md).
 - [x] UI preserves accepted design, English user copy, role/state eligibility and contextual verification rather than a system console.
-- [ ] Exact current contract/test counts and README/submission claims trace to state/view/test/evidence.
-- [ ] genlayer-precheck.ps1 -Project scope-exit -Category projects reports NO BLOCKER with applicable dynamic checks.
+- [x] Exact current contract/test counts and README/submission claims trace to state/view/test/evidence; 1 IC, 74 direct + 1 integration + 6 tooling + 30 frontend tests.
+- [x] genlayer-precheck.ps1 -Project scope-exit -Category projects reports NO BLOCKER with applicable dynamic checks. See PRECHECK-REVIEW.md for actual zero-blocker output and the one payability-helper warning.
 - [ ] Final master reread item-by-item proof audit; uncertainty explicitly listed; postmortem/registry updated and milestone delta recorded.
 
 Until every unchecked item has fresh proof, this specification is an implementation design, not completion or submission readiness.
 
 ## Honest limitations
 
-Two constitutive internal one-time rights only; no proof of outside ownership, actual agent execution/delivery, legal enforceability, automatic external access control or verified adoption. The reference is a historical fixed vocabulary snapshot; if exact bytes change, review safely waits instead of silently trusting a new document. Three bounded review attempts; ambiguous/cyclic terms may require a new unfunded offer after expiry recovery, never unilateral rewriting of a funded agreement. EOAs are the tested native withdrawal recipients; smart-contract receiver compatibility is unclaimed. Models can disagree or be wrong; independent consensus and deterministic accounting reduce unilateral authority but do not establish external truth. Local direct/simulation/UI baseline is distinct from deployed consensus, native transfer and browser signing. Public/CI/live/Portal evidence is pending until executed.
+Two constitutive internal one-time rights only; no proof of outside ownership, actual agent execution/delivery, legal enforceability, automatic external access control or verified adoption. The reference is a historical fixed vocabulary snapshot; if exact bytes change, review safely waits instead of silently trusting a new document. Three bounded review attempts; ambiguous/cyclic terms may require a new unfunded offer after expiry recovery, never unilateral rewriting of a funded agreement. EOAs are the tested native withdrawal recipients; smart-contract receiver compatibility is unclaimed. Models can disagree or be wrong; independent consensus and deterministic accounting reduce unilateral authority but do not establish external truth. Local direct/simulation/UI baseline is distinct from deployed consensus, native transfer and browser signing. Public repository, CI, live hosting and browser issuer execution are verified; Portal submission is pending until its confirmation is observed.
 
 Adoption path: publish the typed rights adapter for AgentToolLeaseAdapter, DataRoomExportGateway and CreativeWorkflowBundleGateway; these are proposed consumers, not live users. Next substantial milestone after acceptance: bounded multi-component prerequisite graphs with complete pair/path validation, plus an actual holder-authorized consumer integration and new graph/accounting evidence. Document the accepted-version delta and meaningful usage; no cosmetic repackaging. Later signed consumer receipts need their own authority matrix and live authenticity proof.
 

@@ -1,7 +1,7 @@
 {
-  "at": "2026-10-07T10:09:45.614Z",
+  "at": "2026-10-07T11:08:16.010Z",
   "command": "node scripts/browser-state-review.mjs",
-  "base": "https://scope-exit-genlayer.vercel.app/",
+  "base": "https://scope-exit-genlayer.vercel.app",
   "network": "studio-dev",
   "contractAddress": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
   "mode": "ACTUAL_BROWSER_CANONICAL_READS",
@@ -33,7 +33,7 @@
     },
     {
       "route": "/activity",
-      "canonicalEvents": 23
+      "canonicalEvents": 30
     }
   ],
   "passed": true

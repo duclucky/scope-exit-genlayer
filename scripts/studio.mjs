@@ -296,6 +296,27 @@ async function diagnose(key) {
     safeDiagnostics: vocabulary.filter(word => text.includes(word)) });
   output({ canonical: await snapshot(item.args?.[0]) });
 }
+// Bounded counterpart setup for the owner-operated browser offer. Never signs
+// for the browser account, never creates another offer, and never replays a hash.
+async function browserCounterpart(id, action) {
+  if (id !== 'sx-ddc3df46' || !['purchase', 'consequence', 'refund'].includes(action)) throw new Error('UNKNOWN_COMMAND');
+  await identity();
+  const current = await agreement(id);
+  if (!current || current.issuer.toLowerCase() !== accounts.issuer.address.toLowerCase()
+      || current.buyer.toLowerCase() !== accounts.buyer.address.toLowerCase()
+      || current.digest !== 'ae6adae9d99fe7c8372e1c36e69adf6feed40bfd39b8580abaebe4e1d94e4895') throw new Error('DEPLOYMENT_IDENTITY');
+  output({ browserCounterpart: id, action, before: current, signer: accounts.buyer.address, browserAccountNotSignedByScript: true });
+  if (action === 'purchase') {
+    if (current.phase === 'OFFERED') await step(`browser-${id}-purchase`, 'buyer', 'accept_offer', [id, current.digest], parseUnits('2', 18));
+    else output({ purchaseNotReplayed: true });
+  } else if (action === 'consequence') {
+    if (JSON.stringify(current.dependencies) !== JSON.stringify(['INDEPENDENT', 'INDEPENDENT'])) throw new Error('UNEXPECTED_VERDICT');
+    if (current.permissions[0].status === 'ACTIVE') await step(`browser-${id}-exit`, 'buyer', 'exit_component', [id, 'A']);
+    const refreshed = await agreement(id);
+    if (refreshed.permissions[1].status === 'ACTIVE') await step(`browser-${id}-consume`, 'buyer', 'consume_component', [id, 'B']);
+  } else await withdrawal(id, 'buyer', `browser-${id}-refund`);
+  output({ browserCounterpart: id, after: await snapshot(id) });
+}
 try {
   const command = process.argv[2] ?? 'inspect';
   if (command === 'inspect') await inspect();
@@ -303,6 +324,7 @@ try {
   else if (command === 'zero-smoke') await zeroSmoke();
   else if (command === 'lifecycle') await lifecycle(process.argv[3]);
   else if (command === 'diagnose') await diagnose(process.argv[3]);
+  else if (command === 'browser-counterpart') await browserCounterpart(process.argv[3], process.argv[4]);
   else throw new Error('UNKNOWN_COMMAND');
 } catch (error) {
   const allowed = ['NETWORK_IDENTITY', 'DEPLOYMENT_IDENTITY', 'EXECUTION_FAILED', 'PENDING_FINALITY', 'AMBIGUOUS_SUBMISSION', 'ROLE_UNAVAILABLE', 'ZERO_VALUE_SMOKE_REQUIRED', 'SOURCE_SMOKE_REQUIRED', 'COMMITTED_SOURCE_REQUIRED', 'DEPLOYMENT_ADDRESS', 'DEPLOYED_POLICY', 'UNKNOWN_COMMAND', 'RPC_FAILED', 'NATIVE_TRANSFER_UNPROVEN', 'UNEXPECTED_VERDICT', 'REMAINING_LIABILITY'];

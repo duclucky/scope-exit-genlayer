@@ -36,8 +36,11 @@ withdrawals have separate exact native-decrease and locked-recipient proofs.
 `unclear-review.json` records MODEL_UNCLEAR with two UNVERIFIABLE relations and
 unchanged 2 GEN escrow. After expiry, an unrelated observer recovered unused
 escrow to the locked buyer; `unclear-lifecycle.json` records withdrawal and
-closure. The final global read shows 6 GEN received/withdrawn, zero escrow,
-zero credits and zero native contract balance.
+closure. That checkpoint showed 6 GEN received/withdrawn and zero liability. After the
+additional browser issuer case, current totals are 8 GEN received/withdrawn,
+zero escrow/credits and zero native contract balance.
 
-Browser-wallet signing is pending. Script signing is never presented as
-browser-extension signing.
+The browser issuer case sx-ddc3df46 proves real MetaMask create/review/withdraw/close
+with canonical reload and an exact 1 GEN native transfer. Buyer purchase/exit/use/refund
+are explicitly script-signed counterpart actions. See ../../BROWSER-EVIDENCE.md.
+All four funded cases are closed and six native withdrawals are proven.

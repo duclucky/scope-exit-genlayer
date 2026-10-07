@@ -43,8 +43,8 @@ signed Studio Dev evidence under `evidence/studio-dev/`. That directory now
 contains three actual finalized lifecycles: full dependency cancellation,
 independent-right preservation/exercise, and non-penalizing ambiguous review
 followed by expiry recovery. Four withdrawals prove exact native decreases,
-locked recipients and zero remaining credits. Browser-wallet signing remains
-pending until its own evidence is recorded. Actual local and production browser
+locked recipients and zero remaining credits. The additional browser issuer workflow has separate create/review/withdraw/close
+proof in BROWSER-EVIDENCE.md; its buyer counterpart remains script-signed. Actual local and production browser
 canonical reads are separately recorded; successful CI is linked in README.
 
 Raw Studio `leader_receipt` may include both `mode: leader` and `mode: validator`
