@@ -1,0 +1,218 @@
+{
+  "at": "2026-10-07T09:05:46.623Z",
+  "command": "node scripts/frontend-review.mjs",
+  "mode": "ISOLATED_HEADLESS_EDGE",
+  "phase": "3B",
+  "productionAdapter": "UNCONFIGURED",
+  "noWalletKeys": true,
+  "noSignedTransactions": true,
+  "noGENSent": true,
+  "limitations": "Route, responsive, modal and draft behavior only. No deployed IC/RPC, browser-extension wallet lifecycle or value-transfer evidence.",
+  "passed": true,
+  "results": [
+    {
+      "width": 375,
+      "path": "/",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 375,
+      "path": "/agreements",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 375,
+      "path": "/new",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 375,
+      "path": "/activity",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 375,
+      "path": "/account",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 375,
+      "path": "/help",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 375,
+      "path": "/agreements/not-a-live-agreement",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 375,
+      "modalEscape": true,
+      "emptyWalletHonest": true,
+      "invalidFormBlocked": true,
+      "validDraftReview": true,
+      "noFakeOnchainOffer": true,
+      "pageErrors": 0
+    },
+    {
+      "width": 768,
+      "path": "/",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "path": "/agreements",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "path": "/new",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "path": "/activity",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "path": "/account",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "path": "/help",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "path": "/agreements/not-a-live-agreement",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "modalEscape": true,
+      "emptyWalletHonest": true,
+      "invalidFormBlocked": true,
+      "validDraftReview": true,
+      "noFakeOnchainOffer": true,
+      "pageErrors": 0
+    },
+    {
+      "width": 1024,
+      "path": "/",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1024,
+      "path": "/agreements",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1024,
+      "path": "/new",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1024,
+      "path": "/activity",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1024,
+      "path": "/account",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1024,
+      "path": "/help",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1024,
+      "path": "/agreements/not-a-live-agreement",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1024,
+      "modalEscape": true,
+      "emptyWalletHonest": true,
+      "invalidFormBlocked": true,
+      "validDraftReview": true,
+      "noFakeOnchainOffer": true,
+      "pageErrors": 0
+    },
+    {
+      "width": 1440,
+      "path": "/",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1440,
+      "path": "/agreements",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1440,
+      "path": "/new",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1440,
+      "path": "/activity",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1440,
+      "path": "/account",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1440,
+      "path": "/help",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1440,
+      "path": "/agreements/not-a-live-agreement",
+      "navigation": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1440,
+      "modalEscape": true,
+      "emptyWalletHonest": true,
+      "invalidFormBlocked": true,
+      "validDraftReview": true,
+      "noFakeOnchainOffer": true,
+      "pageErrors": 0
+    }
+  ]
+}
