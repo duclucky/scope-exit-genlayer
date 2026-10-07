@@ -28,8 +28,10 @@ Browser issuer evidence: https://github.com/duclucky/scope-exit-genlayer/blob/ma
 
 CI: https://github.com/duclucky/scope-exit-genlayer/actions/workflows/check.yml
 
-The final handoff must identify the successful run for the current public commit.
-A workflow link alone is not a CI success claim.
+Verified implementation/evidence checkpoint: commit `70cd5e4`, successful run
+https://github.com/duclucky/scope-exit-genlayer/actions/runs/37613285520.
+The final handoff identifies the successful run for the latest documentation
+commit separately. A workflow link alone is not a CI success claim.
 
 Demo video: optional on the authenticated Portal form; none claimed.
 
@@ -71,3 +73,6 @@ implementation/test claim, with live script execution identified separately.
 Portal draft was inspected in an authenticated session on 2026-10-07. It offers
 12 how-to rows, an optional demo-video URL and reCAPTCHA. No submission or
 acceptance is claimed until an actual confirmation is observed.
+
+The completed delivery review, remaining scope limits and next substantial
+milestone are recorded in [POSTMORTEM.md](POSTMORTEM.md).

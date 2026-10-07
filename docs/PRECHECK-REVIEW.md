@@ -32,4 +32,5 @@ does not establish transfer: native balance changes are required and recorded.
 The workspace checker is intentionally outside the public deliverable. Its raw
 control reports are ignored; this document records the allowlisted result and
 the manual resolution. Browser issuer create/review/withdraw/close now passes with exact native proof;
-final public-commit CI and final audit are being reconciled separately.
+implementation/evidence commit 70cd5e4 has successful CI37613285520. Later
+documentation commits receive their own CI verification in the final handoff.

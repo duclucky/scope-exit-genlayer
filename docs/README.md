@@ -472,9 +472,11 @@ Proposed consumers and milestone headroom remain design claims. No outside deliv
 - [x] UI preserves accepted design, English user copy, role/state eligibility and contextual verification rather than a system console.
 - [x] Exact current contract/test counts and README/submission claims trace to state/view/test/evidence; 1 IC, 74 direct + 1 integration + 6 tooling + 30 frontend tests.
 - [x] genlayer-precheck.ps1 -Project scope-exit -Category projects reports NO BLOCKER with applicable dynamic checks. See PRECHECK-REVIEW.md for actual zero-blocker output and the one payability-helper warning.
-- [ ] Final master reread item-by-item proof audit; uncertainty explicitly listed; postmortem/registry updated and milestone delta recorded.
+- [x] Final master reread and item-by-item proof reconciliation completed; postmortem/registry updated and milestone delta recorded. Two historical process deviations and unverified external claims remain explicitly disclosed in POSTMORTEM.md; exact historical compliance is not claimed. Portal confirmation remains pending.
 
-Until every unchecked item has fresh proof, this specification is an implementation design, not completion or submission readiness.
+The checked items describe verified implementation and evidence, subject to the
+explicit limits below. Portal submission and acceptance require their own
+observed confirmations; they are not implied by this checklist.
 
 ## Honest limitations
 
