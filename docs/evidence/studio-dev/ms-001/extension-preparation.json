@@ -1,0 +1,950 @@
+{
+  "network": "studio-dev",
+  "grant": {
+    "id": "ms001-extension-v1",
+    "issuer": "0x45248be151F7f7e230150db23774733Cd966Eb45",
+    "buyer": "0xC495ef51618D03267A1f227aFe5b27B38c748272"
+  },
+  "signing": "SCRIPT_PREPARATION_ONLY",
+  "extensionDelivery": "PENDING_OWNER_SIGNATURE",
+  "after": {
+    "at": "2026-10-12T02:16:40.134Z",
+    "agreement": {
+      "attempt": 1,
+      "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+      "buyerCreditGEN": "0",
+      "dependencies": [
+        "INDEPENDENT",
+        "INDEPENDENT"
+      ],
+      "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+      "escrowGEN": "0",
+      "expiry": 1791857378,
+      "id": "ms001-extension-v1",
+      "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+      "issuerCreditGEN": "0",
+      "permissions": [
+        {
+          "id": "A",
+          "status": "CANCELLED",
+          "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+          "title": "Dataset analysis"
+        },
+        {
+          "id": "B",
+          "status": "CONSUMED",
+          "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+          "title": "Dataset export"
+        }
+      ],
+      "phase": "CLOSED",
+      "receivedGEN": "2",
+      "title": "Extension wallet dataset export",
+      "withdrawnGEN": "2"
+    },
+    "accounting": {
+      "conserved": true,
+      "creditsGEN": "0",
+      "escrowGEN": "0",
+      "receivedGEN": "12",
+      "withdrawnGEN": "12"
+    },
+    "contractBalanceGEN": "0"
+  },
+  "attempts": {
+    "ms001-extension-create": {
+      "actor": "0x45248be151F7f7e230150db23774733Cd966Eb45",
+      "role": "observer",
+      "method": "create_offer",
+      "args": [
+        "ms001-extension-v1",
+        "Extension wallet dataset export",
+        "0xC495ef51618D03267A1f227aFe5b27B38c748272",
+        "Dataset analysis",
+        "The named buyer may analyse the registered dataset independently of export permission B.",
+        "Dataset export",
+        "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+        1791857378
+      ],
+      "valueGEN": "0",
+      "feeBudgetGEN": "0.000378546000010352",
+      "beforeActorGEN": "4.995373309200002149",
+      "beforeContractGEN": "0",
+      "canonical": {
+        "before": {
+          "at": "2026-10-12T02:09:39.358Z",
+          "agreement": null,
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "0",
+            "receivedGEN": "10",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "0"
+        },
+        "after": {
+          "at": "2026-10-12T02:10:24.385Z",
+          "agreement": {
+            "attempt": 0,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": null,
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "0",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "LOCKED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "LOCKED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "OFFERED",
+            "receivedGEN": "0",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "0",
+            "receivedGEN": "10",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "0"
+        }
+      },
+      "startedAt": "2026-10-12T02:09:48.145Z",
+      "stage": "FINALIZED",
+      "hash": "0x1be2cd26ff604d368eb898faf41f6a7ca88006f77720d33ecb4a25ba97a33a60",
+      "receipt": {
+        "hash": "0x1be2cd26ff604d368eb898faf41f6a7ca88006f77720d33ecb4a25ba97a33a60",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-12T02:10:24.381Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0x1be2cd26ff604d368eb898faf41f6a7ca88006f77720d33ecb4a25ba97a33a60"
+      },
+      "afterActorGEN": "4.995294669450001326"
+    },
+    "ms001-extension-purchase": {
+      "actor": "0xC495ef51618D03267A1f227aFe5b27B38c748272",
+      "role": "issuer",
+      "method": "accept_offer",
+      "args": [
+        "ms001-extension-v1",
+        "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8"
+      ],
+      "valueGEN": "2",
+      "feeBudgetGEN": "0.000378507600010352",
+      "beforeActorGEN": "36.280803146582820906",
+      "beforeContractGEN": "0",
+      "canonical": {
+        "before": {
+          "at": "2026-10-12T02:10:29.520Z",
+          "agreement": {
+            "attempt": 0,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": null,
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "0",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "LOCKED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "LOCKED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "OFFERED",
+            "receivedGEN": "0",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "0",
+            "receivedGEN": "10",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "0"
+        },
+        "after": {
+          "at": "2026-10-12T02:11:16.349Z",
+          "agreement": {
+            "attempt": 0,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": null,
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "2",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "LOCKED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "LOCKED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "FUNDED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "2",
+            "receivedGEN": "12",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "2"
+        }
+      },
+      "startedAt": "2026-10-12T02:10:35.654Z",
+      "stage": "FINALIZED",
+      "hash": "0x07387eb68249db8b907ca05df36e66f03e31743faba82670e2182ecd3a5a1672",
+      "receipt": {
+        "hash": "0x07387eb68249db8b907ca05df36e66f03e31743faba82670e2182ecd3a5a1672",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-12T02:11:16.345Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0x07387eb68249db8b907ca05df36e66f03e31743faba82670e2182ecd3a5a1672"
+      },
+      "afterActorGEN": "34.280724514832820083"
+    },
+    "ms001-extension-review": {
+      "actor": "0x45248be151F7f7e230150db23774733Cd966Eb45",
+      "role": "observer",
+      "method": "review_dependencies",
+      "args": [
+        "ms001-extension-v1"
+      ],
+      "valueGEN": "0",
+      "feeBudgetGEN": "0.000379600800010352",
+      "beforeActorGEN": "4.995294669450001326",
+      "beforeContractGEN": "2",
+      "canonical": {
+        "before": {
+          "at": "2026-10-12T02:11:20.651Z",
+          "agreement": {
+            "attempt": 0,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": null,
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "2",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "LOCKED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "LOCKED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "FUNDED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "2",
+            "receivedGEN": "12",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "2"
+        },
+        "after": {
+          "at": "2026-10-12T02:12:20.179Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "2",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "ACTIVE",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "ACTIVE",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "2",
+            "receivedGEN": "12",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "2"
+        }
+      },
+      "startedAt": "2026-10-12T02:11:34.277Z",
+      "stage": "FINALIZED",
+      "hash": "0x47106122979e0582daf207b760679a7fabbcd82ed35aabab035a0f3d394067c0",
+      "receipt": {
+        "hash": "0x47106122979e0582daf207b760679a7fabbcd82ed35aabab035a0f3d394067c0",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-12T02:12:20.175Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0x47106122979e0582daf207b760679a7fabbcd82ed35aabab035a0f3d394067c0"
+      },
+      "afterActorGEN": "4.995215821950000503"
+    },
+    "ms001-extension-exit": {
+      "actor": "0xC495ef51618D03267A1f227aFe5b27B38c748272",
+      "role": "issuer",
+      "method": "exit_component",
+      "args": [
+        "ms001-extension-v1",
+        "A"
+      ],
+      "valueGEN": "0",
+      "feeBudgetGEN": "0.000378507600010352",
+      "beforeActorGEN": "34.280724514832820083",
+      "beforeContractGEN": "2",
+      "canonical": {
+        "before": {
+          "at": "2026-10-12T02:12:24.070Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "2",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "ACTIVE",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "ACTIVE",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "2",
+            "receivedGEN": "12",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "2"
+        },
+        "after": {
+          "at": "2026-10-12T02:13:08.286Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "1",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "1",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "ACTIVE",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "1",
+            "escrowGEN": "1",
+            "receivedGEN": "12",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "2"
+        }
+      },
+      "startedAt": "2026-10-12T02:12:30.126Z",
+      "stage": "FINALIZED",
+      "hash": "0x3dc4979d5ad751d025f364aae20e52a6db2291b110e5db6b96f311d863269c6b",
+      "receipt": {
+        "hash": "0x3dc4979d5ad751d025f364aae20e52a6db2291b110e5db6b96f311d863269c6b",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-12T02:13:08.282Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0x3dc4979d5ad751d025f364aae20e52a6db2291b110e5db6b96f311d863269c6b"
+      },
+      "afterActorGEN": "34.28064588308281926"
+    },
+    "ms001-extension-exercise": {
+      "actor": "0xC495ef51618D03267A1f227aFe5b27B38c748272",
+      "role": "issuer",
+      "method": "consume_component",
+      "args": [
+        "ms001-extension-v1",
+        "B"
+      ],
+      "valueGEN": "0",
+      "feeBudgetGEN": "0.000378508800010352",
+      "beforeActorGEN": "34.28064588308281926",
+      "beforeContractGEN": "2",
+      "canonical": {
+        "before": {
+          "at": "2026-10-12T02:13:12.278Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "1",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "1",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "ACTIVE",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "1",
+            "escrowGEN": "1",
+            "receivedGEN": "12",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "2"
+        },
+        "after": {
+          "at": "2026-10-12T02:13:56.096Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "1",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "0",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "1",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "CONSUMED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "2",
+            "escrowGEN": "0",
+            "receivedGEN": "12",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "2"
+        }
+      },
+      "startedAt": "2026-10-12T02:13:18.644Z",
+      "stage": "FINALIZED",
+      "hash": "0x9809e66687f911970e0709fccb0e466b2788571c55961f6bc7fe47dbbbda6306",
+      "receipt": {
+        "hash": "0x9809e66687f911970e0709fccb0e466b2788571c55961f6bc7fe47dbbbda6306",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-12T02:13:56.092Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0x9809e66687f911970e0709fccb0e466b2788571c55961f6bc7fe47dbbbda6306"
+      },
+      "afterActorGEN": "34.280567251082818437"
+    },
+    "ms001-extension-buyer-withdraw": {
+      "actor": "0xC495ef51618D03267A1f227aFe5b27B38c748272",
+      "role": "issuer",
+      "method": "withdraw",
+      "args": [
+        "ms001-extension-v1"
+      ],
+      "valueGEN": "0",
+      "feeBudgetGEN": "0.000759810000010352",
+      "beforeActorGEN": "34.280567251082818437",
+      "beforeContractGEN": "2",
+      "canonical": {
+        "before": {
+          "at": "2026-10-12T02:14:00.743Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "1",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "0",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "1",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "CONSUMED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "0"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "2",
+            "escrowGEN": "0",
+            "receivedGEN": "12",
+            "withdrawnGEN": "10"
+          },
+          "contractBalanceGEN": "2"
+        },
+        "after": {
+          "at": "2026-10-12T02:14:50.351Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "0",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "1",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "CONSUMED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "1"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "1",
+            "escrowGEN": "0",
+            "receivedGEN": "12",
+            "withdrawnGEN": "11"
+          },
+          "contractBalanceGEN": "1"
+        }
+      },
+      "startedAt": "2026-10-12T02:14:10.269Z",
+      "stage": "FINALIZED",
+      "hash": "0x67c99705748fde590cd62b9a1c874e5d7e50fa5dac1b7c0f9e510a1ed42fd9ba",
+      "receipt": {
+        "hash": "0x67c99705748fde590cd62b9a1c874e5d7e50fa5dac1b7c0f9e510a1ed42fd9ba",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-12T02:14:50.347Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0x67c99705748fde590cd62b9a1c874e5d7e50fa5dac1b7c0f9e510a1ed42fd9ba"
+      },
+      "afterActorGEN": "35.280440943332817614",
+      "transferProof": {
+        "expectedGEN": "1",
+        "exactContractDecreaseGEN": "1",
+        "recipientNetIncreaseGEN": "0.999873692249999177",
+        "recipient": "0xC495ef51618D03267A1f227aFe5b27B38c748272",
+        "nativeMessageBound": true,
+        "proven": true
+      }
+    },
+    "ms001-extension-issuer-withdraw": {
+      "actor": "0x45248be151F7f7e230150db23774733Cd966Eb45",
+      "role": "observer",
+      "method": "withdraw",
+      "args": [
+        "ms001-extension-v1"
+      ],
+      "valueGEN": "0",
+      "feeBudgetGEN": "0.000759811200010352",
+      "beforeActorGEN": "4.995215821950000503",
+      "beforeContractGEN": "1",
+      "canonical": {
+        "before": {
+          "at": "2026-10-12T02:14:57.304Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "0",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "1",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "CONSUMED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "1"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "1",
+            "escrowGEN": "0",
+            "receivedGEN": "12",
+            "withdrawnGEN": "11"
+          },
+          "contractBalanceGEN": "1"
+        },
+        "after": {
+          "at": "2026-10-12T02:15:43.447Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "0",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "CONSUMED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "2"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "0",
+            "receivedGEN": "12",
+            "withdrawnGEN": "12"
+          },
+          "contractBalanceGEN": "0"
+        }
+      },
+      "startedAt": "2026-10-12T02:15:06.552Z",
+      "stage": "FINALIZED",
+      "hash": "0xfff19a78f96bc08fcdc353837913153915ff6837bdc7d46ce6acba66ae2deb0f",
+      "receipt": {
+        "hash": "0xfff19a78f96bc08fcdc353837913153915ff6837bdc7d46ce6acba66ae2deb0f",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-12T02:15:43.443Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0xfff19a78f96bc08fcdc353837913153915ff6837bdc7d46ce6acba66ae2deb0f"
+      },
+      "afterActorGEN": "5.99508951394999968",
+      "transferProof": {
+        "expectedGEN": "1",
+        "exactContractDecreaseGEN": "1",
+        "recipientNetIncreaseGEN": "0.999873691999999177",
+        "recipient": "0x45248be151F7f7e230150db23774733Cd966Eb45",
+        "nativeMessageBound": true,
+        "proven": true
+      }
+    },
+    "ms001-extension-close": {
+      "actor": "0x45248be151F7f7e230150db23774733Cd966Eb45",
+      "role": "observer",
+      "method": "close",
+      "args": [
+        "ms001-extension-v1"
+      ],
+      "valueGEN": "0",
+      "feeBudgetGEN": "0.000378502800010352",
+      "beforeActorGEN": "5.99508951394999968",
+      "beforeContractGEN": "0",
+      "canonical": {
+        "before": {
+          "at": "2026-10-12T02:15:52.157Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "0",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "CONSUMED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "REVIEWED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "2"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "0",
+            "receivedGEN": "12",
+            "withdrawnGEN": "12"
+          },
+          "contractBalanceGEN": "0"
+        },
+        "after": {
+          "at": "2026-10-12T02:16:34.896Z",
+          "agreement": {
+            "attempt": 1,
+            "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+            "buyerCreditGEN": "0",
+            "dependencies": [
+              "INDEPENDENT",
+              "INDEPENDENT"
+            ],
+            "digest": "6ff0fe186c56c7ee6d9729ec67d1fc94b044d9dc80a1592e900dea30f67e8ee8",
+            "escrowGEN": "0",
+            "expiry": 1791857378,
+            "id": "ms001-extension-v1",
+            "issuer": "0x45248be151f7f7e230150db23774733cd966eb45",
+            "issuerCreditGEN": "0",
+            "permissions": [
+              {
+                "id": "A",
+                "status": "CANCELLED",
+                "terms": "The named buyer may analyse the registered dataset independently of export permission B.",
+                "title": "Dataset analysis"
+              },
+              {
+                "id": "B",
+                "status": "CONSUMED",
+                "terms": "The named buyer may export resource scopeexit-sample-records version 1 SHA-256 ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29 independently of analysis permission A. ScopeExit exercise of permission B authorizes repeat delivery of these exact synthetic CSV bytes by the ScopeExit consumer.",
+                "title": "Dataset export"
+              }
+            ],
+            "phase": "CLOSED",
+            "receivedGEN": "2",
+            "title": "Extension wallet dataset export",
+            "withdrawnGEN": "2"
+          },
+          "accounting": {
+            "conserved": true,
+            "creditsGEN": "0",
+            "escrowGEN": "0",
+            "receivedGEN": "12",
+            "withdrawnGEN": "12"
+          },
+          "contractBalanceGEN": "0"
+        }
+      },
+      "startedAt": "2026-10-12T02:15:58.862Z",
+      "stage": "FINALIZED",
+      "hash": "0x9cca37b2802a4f4a869cecfc15f47315799ad842489095f3275ddd1ab8b16fca",
+      "receipt": {
+        "hash": "0x9cca37b2802a4f4a869cecfc15f47315799ad842489095f3275ddd1ab8b16fca",
+        "status": "FINALIZED",
+        "executionResult": "SUCCESS",
+        "contractAddress": null,
+        "observedAt": "2026-10-12T02:16:34.892Z",
+        "explorer": "https://explorer-studio-dev.genlayer.com/tx/0x9cca37b2802a4f4a869cecfc15f47315799ad842489095f3275ddd1ab8b16fca"
+      },
+      "afterActorGEN": "5.995010883199998857"
+    }
+  }
+}

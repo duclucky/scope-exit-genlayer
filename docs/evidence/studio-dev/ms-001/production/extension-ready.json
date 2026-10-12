@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-12T02:15:44.019Z",
+  "phase": "MS-001",
+  "url": "https://scope-exit-genlayer.vercel.app/#/agreements/ms001-extension-v1",
+  "mode": "ISOLATED_HEADLESS_READ_ONLY_NO_WALLET",
+  "httpStatus": 200,
+  "registeredGrant": true,
+  "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+  "permissionB": "CONSUMED",
+  "canonicalPhase": "REVIEWED",
+  "anonymousDownloadDisabled": true,
+  "pageErrors": 0,
+  "extensionSignature": "PENDING_OWNER_ACTION"
+}

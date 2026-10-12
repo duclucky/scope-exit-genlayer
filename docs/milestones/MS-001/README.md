@@ -1,6 +1,6 @@
 # MS-001: wallet-authorized dataset export consumer
 
-Status: BUILDING (extension-verification supplement). Baseline: 6720db3136498dacef2a81fbedd250de5b1ced66.
+Status: SUBMISSION_READY, NOT_SUBMITTED. Baseline: 6720db3136498dacef2a81fbedd250de5b1ced66.
 Owner confirmation on 2026-10-12 establishes acceptance for this run; independent
 Portal acceptance and points are not claimed. Portal milestone: NOT_SUBMITTED.
 
@@ -87,9 +87,9 @@ These are admission reasons, not execution PASS claims.
 
 | New claim | Method/state | View/read | Tests | Network evidence |
 | --- | --- | --- | --- | --- |
-| Registered consumer resource | Consumer fixed policy | Canonical get_agreement | Exact issuer/terms/resource negatives | MS-001 consumer lifecycle PENDING |
-| Authorized CSV delivery | POST export authentication + B consumed | get_right/get_history/latest-final | Signature/binding/time/state/output tests | MS-001 live endpoint requests PENDING |
-| Browser exercise/download | Existing consume_component + signed read | Canonical reload + digest | Consumer UI/actual SDK tests | Browser path PENDING |
+| Registered consumer resource | Consumer fixed policy | Canonical get_agreement | Exact issuer/terms/resource negatives | consumer-lifecycle.json; extension-preparation.json |
+| Authorized CSV delivery | POST export authentication + B consumed | get_right/get_history/latest-final | Signature/binding/time/state/output tests | production/browser-review.json; production/extension-delivery.json |
+| Browser exercise/download | Existing consume_component + signed read | Canonical reload + digest | Consumer UI/actual SDK tests | Production browser QA; owner-reported extension download; exercise writes remain script-signed |
 
 | Method | Caller | Allowed | Forbidden | Time | Idempotency | Value | Views | Negative tests |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -210,3 +210,39 @@ authorized accounts and must finish both withdrawals and closure. Only the
 owner signs the final personal_sign download in the extension. That signature
 moves no GEN and needs no import of a script wallet key. Script-write and
 extension-delivery evidence remain distinct.
+
+## Verification supplement closure
+
+The supplement at `264819e2f1d133511897e64ae37141f9a8ad1a6c` adds four
+bounded-grant substitution tests. `npm run check` now passes 142 tests:
+74 direct, 1 integration, 32 tooling and 35 frontend; 31 are new versus the
+accepted 111-test baseline. [CI38194751850](https://github.com/duclucky/scope-exit-genlayer/actions/runs/38194751850)
+completed SUCCESS for that exact implementation revision.
+
+`node scripts/studio.mjs extension-prepare` completed with eight FINALIZED / SUCCESS
+transactions, exact 1 GEN buyer and issuer withdrawals and CLOSED canonical state.
+[Extension preparation](../../evidence/studio-dev/ms-001/extension-preparation.json)
+proves these script-signed writes. Across the two new phase cases there are 16
+successful transactions and four native withdrawal proofs. Current global totals
+are 12 GEN received and withdrawn, with zero escrow, credits and native balance.
+These totals include baseline cases; baseline receipts are not new impact.
+
+The production supplement is READY as
+`dpl_BHYE2xzB2P69MqjfiLDhzHaKQee1`, with HTTP200, ScopeExit/React root and asset
+`index-CHvX2oPg.js`. Anonymous read-only browser QA shows the registered grant and
+disabled unauthenticated download, with no page errors. The owner reported
+successful download after the MetaMask instructions and supplied a screenshot
+showing the exact three CSV rows. [Delivery proof](../../evidence/studio-dev/ms-001/production/extension-delivery.json)
+labels this OWNER_REPORTED_EXTENSION_DOWNLOAD_WITH_SCREENSHOT: no independent
+observation of the extension popup or hash of the owner's actual downloaded file
+is claimed. Cryptographic verification and returned-byte integrity remain covered
+by the live script-signer browser proof and regression tests.
+
+Measurement window extends through 2026-10-12T02:16Z. Two owner-operated grants
+are deduplicated by agreement ID, canonical digest and resource version. Repeated
+downloads are not new users, and neither case proves independent adoption.
+The same MS-001 returns VERIFIED -> SUBMISSION_READY; no new phase is selected,
+no accepted baseline is promoted and no Portal submission has occurred.
+
+Final item-by-item master reconciliation and command results:
+[VERIFICATION.md](VERIFICATION.md).

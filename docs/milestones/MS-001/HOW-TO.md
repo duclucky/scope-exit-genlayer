@@ -8,6 +8,28 @@ states and the registered resource details. A visitor can inspect this record;
 only its named buyer can authorize delivery. The test record is not a public
 offer to any wallet. Script/extension evidence labels are in the phase dossier.
 
+## Repeat the owner's extension download
+
+1. Open https://scope-exit-genlayer.vercel.app/#/agreements/ms001-extension-v1.
+2. Click **Connect wallet**, choose **MetaMask** and select
+   `0xc495ef51618d03267a1f227afe5b27b38c748272`. This is this case's named buyer;
+   the original demonstration uses a different buyer.
+3. Check that Dataset analysis is cancelled and Dataset export is used. Purchase,
+   review, exercise, both withdrawals and closure have already finalized through
+   authorized preparation scripts. Do not purchase or exercise again.
+4. In **Download your dataset**, click **Download verified CSV**.
+5. Inspect the **ScopeExit export v1** authorization and sign in MetaMask.
+   This is a message signature: no transaction, GEN transfer or network fee.
+6. The app verifies the returned digest before downloading
+   `scopeexit-sample-records-v1.csv`. The CSV has columns `record_id,category,value`
+   and rows `1,analysis,12`, `2,export,7`, `3,reference,5`.
+7. On an error, refresh and retry the download with a fresh signature. Closed
+   status does not revoke the already consumed Export right. Do not exercise again.
+
+The owner reported successful download and supplied a screenshot of these rows.
+See [extension-delivery.json](../../evidence/studio-dev/ms-001/production/extension-delivery.json)
+for evidence authority and limits; this is separate from script-signer browser QA.
+
 ## Create a new registered grant
 
 1. Connect the service issuer wallet

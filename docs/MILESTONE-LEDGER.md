@@ -19,7 +19,7 @@ seven frontend routes and typed wallet writes; no actual consumer enforcement.
 
 | ID | Title | Status | Baseline | Relationship | Commit range | Deployment | Evidence | Portal | Outcome | Follow-up |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| MS-001 | Wallet-authorized dataset export consumer | BUILDING | 6720db3 | NEW; extends internal rights into an actual consumer-owned delivery endpoint | 6720db3..51b1375 plus closure and verification supplement | Retained IC; supplement deployment pending | [Dossier](milestones/MS-001/README.md) | NOT_SUBMITTED | Pending | Same phase reopened for actual extension wallet |
+| MS-001 | Wallet-authorized dataset export consumer | SUBMISSION_READY | 6720db3 | NEW; extends internal rights into an actual consumer-owned delivery endpoint | 6720db3..264819e plus evidence and Node fixture closure | Retained IC; production supplement READY | [Dossier](milestones/MS-001/README.md) | NOT_SUBMITTED | Pending | Owner-reported extension download documented; await submission authorization |
 
 Only MS-001 is active. No previous milestone exists. Acceptance of this phase
 must be reconciled before another phase is selected.
@@ -58,7 +58,7 @@ Project at 6720db3, including its source, deployment, docs and all claimed evide
 | Consequence/GEN | Real delivery after existing exercise; GEN unchanged | New closure/value law | External endpoint enforcement | Potential new settlement consequence |
 | Integration/deployment | New Vercel export API | New Studio deployment | Separate operator deployment | Signing/origin integration |
 | Frontend writes/views | Existing exercise plus signed delivery; final views | New bundle creation/read paths | Consumer-specific workflow | Receipt/recovery workflow |
-| Tests/lifecycle | 27 new tests plus new consumer case | New graph adversarial lifecycle | Live independent integration | Authenticity/replay lifecycle |
+| Tests/lifecycle | 31 new tests plus two consumer verification cases | New graph adversarial lifecycle | Live independent integration | Authenticity/replay lifecycle |
 | Adoption/window | Owner-operated test only, 2026-10-12 | No usage yet | External evidence absent | No usage yet |
 | Evidence overlap | Baseline cited only; new ms-001 evidence | No prior graph evidence | No external consumer evidence | No prior authenticated receipt evidence |
 
@@ -89,3 +89,15 @@ Dated amendment: owner requested extension verification and identified wallet
 bounded verification case using another existing authorized service issuer.
 The earlier ready checkpoint remains historical. No new Milestone ID/submission
 or extension success is inferred.
+
+Supplement closure: the identified wallet is buyer in ms001-extension-v1;
+eight preparation transactions finalized SUCCESS and the case is CLOSED with
+two exact 1 GEN withdrawals. Global accounting is now 12 GEN received/withdrawn,
+zero escrow/credits/native balance. These preparation writes remain script-signed.
+The owner reported successful download after the MetaMask instructions and supplied
+the exact three CSV rows. The evidence is explicitly owner-reported, with no
+independent wallet-popup observation or hash measurement of the owner's file.
+Production supplement264819e is READY and CI38194751850 SUCCESS; 142 tests PASS.
+The precheck detected Node signer generation inside frontend tests; moving it to
+an ephemeral Node test fixture preserves real signature coverage and production
+behavior. MS-001 returns SUBMISSION_READY. No new phase or Portal action occurs.

@@ -1,6 +1,6 @@
 # MS-001 copy-ready fields
 
-Status: BUILDING (extension-verification supplement), NOT_SUBMITTED.
+Status: SUBMISSION_READY, NOT_SUBMITTED.
 Final Portal Submit requires explicit action-time authorization.
 
 Category: Milestones
@@ -19,6 +19,8 @@ Website: https://scope-exit-genlayer.vercel.app
 
 Changed path: https://scope-exit-genlayer.vercel.app/#/agreements/ms001-export-v1
 
+Owner's extension verification path: https://scope-exit-genlayer.vercel.app/#/agreements/ms001-extension-v1
+
 GitHub: https://github.com/duclucky/scope-exit-genlayer
 
 Contract: https://explorer-studio-dev.genlayer.com/address/0x61619ed664eAB90043765E5bA431EDa35F260fb5
@@ -32,14 +34,25 @@ Verified SUCCESS for implementation commit51b1375. The final handoff includes
 the separate CI result for documentation closure; historical baseline CI is not
 counted as delta evidence.
 
+Bounded extension-grant implementation: `264819e2f1d133511897e64ae37141f9a8ad1a6c`.
+Its CI completed SUCCESS: https://github.com/duclucky/scope-exit-genlayer/actions/runs/38194751850
+Production deployment: `dpl_BHYE2xzB2P69MqjfiLDhzHaKQee1`, READY. Later closure
+changes evidence and moves an ephemeral test signer into a Node-only fixture;
+production contract/API/client semantics remain unchanged.
+
 Lifecycle evidence: https://github.com/duclucky/scope-exit-genlayer/blob/main/docs/evidence/studio-dev/ms-001/consumer-lifecycle.json
 
 Production browser evidence: https://github.com/duclucky/scope-exit-genlayer/blob/main/docs/evidence/studio-dev/ms-001/production/browser-review.json
 
+Extension preparation: https://github.com/duclucky/scope-exit-genlayer/blob/main/docs/evidence/studio-dev/ms-001/extension-preparation.json
+
+Owner-reported extension download and CSV screenshot: https://github.com/duclucky/scope-exit-genlayer/blob/main/docs/evidence/studio-dev/ms-001/production/extension-delivery.json
+
 Verified counts: one retained IC; 142 passing tests (74 direct, 1 integration,
-32 tooling, 35 frontend). MS-001 adds 31 tests; the original new resource-bound closed case has
-eight successful finalized script-signed transactions and two exact 1 GEN native
-withdrawals. Current global totals are 10 GEN received/withdrawn and zero liability.
+32 tooling, 35 frontend). MS-001 adds 31 tests and two new resource-bound closed
+verification cases: 16 successful finalized script-signed transactions and four
+exact 1 GEN native withdrawals. Current global totals are 12 GEN received/withdrawn
+and zero escrow, credits and native balance. Global totals include baseline cases.
 
 Description length: 929 characters excluding its trailing newline.
 
@@ -47,11 +60,12 @@ Exact steps: [HOW-TO.md](HOW-TO.md).
 
 Expected outcome: Only the registered grant's named buyer can authorize CSV delivery after finalized Export exercise. The CSV digest matches the locked resource. An outsider signature or an unexercised right is denied. Delivery retry moves no GEN and creates no second exercise. Refund and earnings withdrawals retain exact native balance proofs.
 
-Usage measurement: one owner-operated agreement, deduplicated by agreement ID,
+Usage measurement: two owner-operated agreements, deduplicated by agreement ID,
 digest and resource version. Repeat HTTP reads are not new users or adoption.
 
 Limits: public synthetic dataset, one primary service issuer and a second issuer
 admitted only for the fixed owner extension-verification case, one resource, EOA
-signatures, Studio Dev only. Extension-operated consumer delivery evidence is
-pending until observed; script EIP-191 signing is recorded separately. No
+signatures, Studio Dev only. Extension delivery is owner-reported with a matching
+CSV screenshot; the popup and owner's downloaded-file hash were not independently
+observed. Script EIP-191 browser QA is recorded separately. No
 independent Portal acceptance record or score is inferred from the owner report.

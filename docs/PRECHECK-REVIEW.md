@@ -34,3 +34,17 @@ control reports are ignored; this document records the allowlisted result and
 the manual resolution. Browser issuer create/review/withdraw/close now passes with exact native proof;
 implementation/evidence commit 70cd5e4 has successful CI37613285520. Later
 documentation commits receive their own CI verification in the final handoff.
+
+## MS-001 refresh (2026-10-12)
+
+The full precheck was rerun with dynamic checks enabled for both `projects` and
+`milestones`. Each returned `0 BLOCKER, 1 WARN, 7 auto-verified OK`; npm check and
+gltest PASS, all five grade gates PASS. The same rejecting-helper warning remains
+reviewed above. The milestone description is929 characters,930 including newline.
+Ephemeral test signer generation moved out of frontend into a Node-only fixture;
+the four client cryptographic tests still pass. No actual wallet key was in the
+frontend tests or production bundle. No checker rule was weakened.
+The retained accepted semantic replay and explicitly labeled QA provider explain
+the remaining rubric heuristics; neither is fake canonical product state.
+See [MS-001 verification](milestones/MS-001/VERIFICATION.md) for the exact delta,
+142-test count, new lifecycle evidence and owner-reported extension download.

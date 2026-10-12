@@ -55,3 +55,13 @@ contract balance. No original evidence is counted as milestone impact.
 The new CSV delivery used a real script EIP-191 buyer signature; outsider and
 unexercised requests were denied. Local browser QA is separately labeled under
 ms-001/local; live deployment and extension proof retain their own statuses.
+
+The [extension-preparation case](ms-001/extension-preparation.json) adds another
+CLOSED resource-bound agreement and two exact 1 GEN withdrawals. Current global
+totals are 12 GEN received/withdrawn, zero escrow, credits and native balance.
+MS-001 has two new funded cases, 16 finalized successful preparation transactions
+and four new native transfer proofs. The owner reported the matching CSV download;
+[extension-delivery.json](ms-001/production/extension-delivery.json) records the
+screenshot and explicitly distinguishes owner testimony from independent browser
+popup or downloaded-file hash observation. The earlier pending signature field
+in the preparation output is superseded by this separate delivery record.

@@ -1,11 +1,10 @@
 import {afterEach,expect,it,vi} from 'vitest';
-import {privateKeyToAccount,generatePrivateKey} from 'viem/accounts';
+import {testHolder as holder} from '../../tests/tooling/consumer-signer-fixture.mjs';
 import {hexToString} from 'viem';
 import {webcrypto} from 'node:crypto';
 import {requestExport} from './consumer-client';
 import {CONSUMER,exportTerms} from './consumer-policy.mjs';
 import type {Agreement} from './adapter';
-const holder=privateKeyToAccount(generatePrivateKey());
 const csv='record_id,category,value\n1,analysis,12\n2,export,7\n3,reference,5\n';
 const agreement=():Agreement=>({id:'consumer-test',digest:'a'.repeat(64),title:'Test fixture',issuer:CONSUMER.issuer,buyer:holder.address,expiry:1,phase:'CLOSED',attempt:1,dependencies:['INDEPENDENT','INDEPENDENT'],permissions:[{id:'A',title:'Analysis',terms:'Independent',status:'CANCELLED'},{id:'B',title:CONSUMER.title,terms:exportTerms(),status:'CONSUMED'}],escrowGEN:'0',buyerCreditGEN:'0',issuerCreditGEN:'0'});
 afterEach(()=>vi.unstubAllGlobals());

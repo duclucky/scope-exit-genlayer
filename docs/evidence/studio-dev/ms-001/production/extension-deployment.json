@@ -1,0 +1,21 @@
+{
+  "phase": "MS-001",
+  "network": "studio-dev",
+  "contractAddress": "0x61619ed664eAB90043765E5bA431EDa35F260fb5",
+  "contractSourceCommit": "9e5de0c122f27967c735034bd73dc67961bbe6cb",
+  "implementationCommit": "264819e2f1d133511897e64ae37141f9a8ad1a6c",
+  "deploymentId": "dpl_BHYE2xzB2P69MqjfiLDhzHaKQee1",
+  "state": "READY",
+  "liveURL": "https://scope-exit-genlayer.vercel.app",
+  "command": "vercel --prod --yes",
+  "rootDirectory": "frontend",
+  "verifiedAt": "2026-10-12T02:18:08.212Z",
+  "httpStatus": 200,
+  "titleAndReactRootPresent": true,
+  "javascriptAsset": "index-CHvX2oPg.js",
+  "cssAsset": "index-Cl-8xdDL.css",
+  "ci": "https://github.com/duclucky/scope-exit-genlayer/actions/runs/38194751850",
+  "ciStatus": "SUCCESS",
+  "priorDeployment": "deployment.json",
+  "extensionEvidence": "extension-delivery.json"
+}

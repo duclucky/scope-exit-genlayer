@@ -1,0 +1,39 @@
+{
+  "phase": "MS-001",
+  "recordedAt": "2026-10-12T02:18:08.212Z",
+  "agreementId": "ms001-extension-v1",
+  "buyer": "0xc495ef51618d03267a1f227afe5b27b38c748272",
+  "url": "https://scope-exit-genlayer.vercel.app/#/agreements/ms001-extension-v1",
+  "evidenceMode": "OWNER_REPORTED_EXTENSION_DOWNLOAD_WITH_SCREENSHOT",
+  "instruction": "Select MetaMask with the named buyer, click Download verified CSV and sign ScopeExit export v1",
+  "ownerStatement": "đã tải thành công, nội dung trong csv đây",
+  "screenshot": "owner-csv.png",
+  "observedColumns": [
+    "record_id",
+    "category",
+    "value"
+  ],
+  "observedRows": [
+    [
+      1,
+      "analysis",
+      12
+    ],
+    [
+      2,
+      "export",
+      7
+    ],
+    [
+      3,
+      "reference",
+      5
+    ]
+  ],
+  "matchesRegisteredCsvRows": true,
+  "independentlyObservedExtensionPopup": false,
+  "ownerDownloadedFileHashIndependentlyMeasured": false,
+  "signatureAndByteVerification": "Client and server enforce signature, canonical rights and SHA-256 before download; covered by tests and separately labeled live script-signer browser QA.",
+  "financialTransactionForDownload": false,
+  "limit": "Owner-reported completion and screenshot corroborate the prescribed extension workflow; they do not independently measure the downloaded file hash or show the wallet popup."
+}

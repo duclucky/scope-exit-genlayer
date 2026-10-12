@@ -75,7 +75,9 @@ It requires the same exact resource terms and finalized exercise; changing the
 case or buyer denies access. This preserves all original grants and lets the
 owner verify delivery using an existing extension account without importing keys.
 
-The MS-001 script-signed lifecycle now has an additional CLOSED funded case,
-two exact 1 GEN native withdrawals and verified 64-byte consumer delivery.
-Current global totals: 10 GEN received/withdrawn, zero liabilities/native balance.
+MS-001 now has two additional CLOSED funded cases, four exact 1 GEN native
+withdrawals and verified 64-byte consumer delivery. The owner reported the
+extension download and supplied the matching CSV rows; its evidence is labeled
+separately from independently executed script-signer browser QA.
+Current global totals: 12 GEN received/withdrawn, zero liabilities/native balance.
 The original 8 GEN checkpoint above remains baseline context.

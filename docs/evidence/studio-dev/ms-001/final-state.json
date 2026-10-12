@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-12T02:21:58.759Z",
+  "phase": "MS-001",
+  "canonicalAgreement": "ms001-extension-v1",
+  "canonicalPhase": "CLOSED",
+  "registeredGrant": true,
+  "permissionStates": [
+    {
+      "id": "A",
+      "status": "CANCELLED"
+    },
+    {
+      "id": "B",
+      "status": "CONSUMED"
+    }
+  ],
+  "accounting": {
+    "conserved": true,
+    "creditsGEN": "0",
+    "escrowGEN": "0",
+    "receivedGEN": "12",
+    "withdrawnGEN": "12"
+  },
+  "contractNativeBalanceGEN": "0",
+  "nativeBalanceAuthority": "Exact native balance read at preparation closure",
+  "transactions": 8,
+  "finalizedSuccess": 8,
+  "withdrawals": [
+    {
+      "hash": "0x67c99705748fde590cd62b9a1c874e5d7e50fa5dac1b7c0f9e510a1ed42fd9ba",
+      "expectedGEN": "1",
+      "exactContractDecreaseGEN": "1",
+      "recipientNetIncreaseGEN": "0.999873692249999177",
+      "recipient": "0xC495ef51618D03267A1f227aFe5b27B38c748272",
+      "nativeMessageBound": true,
+      "proven": true
+    },
+    {
+      "hash": "0xfff19a78f96bc08fcdc353837913153915ff6837bdc7d46ce6acba66ae2deb0f",
+      "expectedGEN": "1",
+      "exactContractDecreaseGEN": "1",
+      "recipientNetIncreaseGEN": "0.999873691999999177",
+      "recipient": "0x45248be151F7f7e230150db23774733Cd966Eb45",
+      "nativeMessageBound": true,
+      "proven": true
+    }
+  ],
+  "contractSourceSha256": "e8d24d9417e2214839568e156f270d67a1ecb9a1d432b7dd79fe081c9cd6359e",
+  "ascii": true
+}
