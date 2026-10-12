@@ -44,3 +44,14 @@ The browser issuer case sx-ddc3df46 proves real MetaMask create/review/withdraw/
 with canonical reload and an exact 1 GEN native transfer. Buyer purchase/exit/use/refund
 are explicitly script-signed counterpart actions. See ../../BROWSER-EVIDENCE.md.
 All four funded cases are closed and six native withdrawals are proven.
+
+## MS-001 checkpoint (2026-10-12)
+
+The four-case/eight-GEN statements above are historical baseline checkpoints.
+The new [consumer lifecycle](ms-001/consumer-lifecycle.json) adds one CLOSED
+resource-bound funded case and two exact 1 GEN native withdrawals. Current
+global received/withdrawn totals are 10 GEN, with zero escrow, credits and native
+contract balance. No original evidence is counted as milestone impact.
+The new CSV delivery used a real script EIP-191 buyer signature; outsider and
+unexercised requests were denied. Local browser QA is separately labeled under
+ms-001/local; live deployment and extension proof retain their own statuses.

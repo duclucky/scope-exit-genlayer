@@ -1,5 +1,9 @@
 # ScopeExit submission packet
 
+Historical original Project packet, submitted 2026-10-07. Counts and snapshots
+below belong to that submission; current milestone delta and counts are recorded
+in [MS-001](milestones/MS-001/README.md), not retroactively added to the original.
+
 Recommended category: **Projects**
 
 Title / project name: **ScopeExit**

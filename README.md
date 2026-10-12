@@ -2,7 +2,7 @@
 
 ScopeExit is a GenLayer project for purchasing two conditional permissions, cancelling their dependent unused parts, and keeping independent rights with exact GEN accounting.
 
-Status: implemented and locally verified, with a deployed Studio Dev contract, three finalized native-GEN lifecycles, public production hosting and successful CI. Actual browser canonical reads and a MetaMask-signed offer publication are verified. The browser issuer workflow now includes finalized review, a proven 1 GEN native withdrawal and closure. Buyer counterpart actions are script-signed; adoption and submission remain unclaimed.
+Accepted baseline: the owner confirmed Project acceptance on 2026-10-12, at repository baseline `6720db3`. An independent Portal acceptance record and awarded score are not claimed. The original contract, native lifecycles, canonical browser reads and issuer MetaMask journey remain baseline evidence; buyer counterparts were script-signed. [MS-001](docs/milestones/MS-001/README.md) adds a registered dataset-export consumer and tracks its new evidence separately. No milestone has been submitted.
 
 The issuer and buyer ratify exact terms for protocol-created rights. GenLayer validators interpret the semantic prerequisites; deterministic code governs cancellation, one-time exercise, fixed refunds and withdrawals. Each component costs 1 GEN; the purchase costs 2 GEN. These permissions do not prove external delivery, ownership or legal enforceability.
 
@@ -25,7 +25,7 @@ The deployed source is commit `9e5de0c122f27967c735034bd73dc67961bbe6cb`, pinned
 
 ## Verification
 
-`npm run check` currently passes GenVM lint, 74 direct Python tests, one three-validator GLSim integration, six Node tooling tests, 30 frontend tests, TypeScript and the production build, with no skipped tests. Simulator behavior is distinct from actual Studio Dev execution and extension signing.
+`npm run check` passes GenVM lint, 74 direct Python tests, one three-validator GLSim integration, 28 Node tooling tests, 35 frontend tests, TypeScript and the production build: 138 tests with no skipped tests. Simulator behavior is distinct from actual Studio Dev execution and extension signing.
 
 [Browser read proof](docs/evidence/local/frontend/state-review.json) checks actual deployed agreement views, results, and canonical history through the same-origin IC proxy. The app includes seven routes, detected-wallet selection, logout and all nine write wrappers. [Browser publication proof](docs/evidence/studio-dev/browser-sx-ddc3df46-create_offer.json) binds a real MetaMask-signed, finalized successful transaction to its canonical agreement. [Browser issuer lifecycle proof](docs/BROWSER-EVIDENCE.md) covers publication, review, withdrawal and closure, with buyer counterpart actions explicitly script-signed.
 
@@ -54,4 +54,21 @@ One-line pitch: Cancel dependent unused permissions, recover their GEN, and keep
 
 ## Limits
 
-The current primitive handles exactly two permissions and fixed whole-GEN prices. Mutual prerequisite cycles and unclear terms remain retryable, with unused escrow recoverable at expiry. It does not authenticate external model generation, delivery, ownership, legal enforceability, or consumer adoption. No separately deployed consumer is claimed.
+The current primitive handles exactly two permissions and fixed whole-GEN prices. Mutual prerequisite cycles and unclear terms remain retryable, with unused escrow recoverable at expiry. It does not authenticate external model generation, delivery, ownership, legal enforceability, or consumer adoption. No additional consumer IC is deployed. MS-001's consumer enforces its own endpoint over public synthetic CSV content; it does not make public bytes confidential or prove outside fulfilment. A two-minute signed delivery request is reusable for idempotent redownload of the same resource.
+
+## Registered dataset consumer (MS-001)
+
+The consumer's locked issuer can select **Use registered dataset scopes** in the
+offer form. After a named buyer purchases, reviews and exercises **Dataset export**,
+the agreement exposes **Download verified CSV**. The selected wallet signs a
+read authorization; the server verifies its buyer signature, domain, chain,
+contract, exact terms/digest, resource hash and finalized exercise history.
+Delivery retry sends no GEN and never exercises or pays again. Only the locked
+service issuer's exact resource grant is accepted; a lookalike offer grants no
+access. See the phase dossier for current local, Studio Dev, live-service and
+browser-extension proof status.
+
+The MS-001 script-signed lifecycle now has an additional CLOSED funded case,
+two exact 1 GEN native withdrawals and verified 64-byte consumer delivery.
+Current global totals: 10 GEN received/withdrawn, zero liabilities/native balance.
+The original 8 GEN checkpoint above remains baseline context.

@@ -12,6 +12,8 @@ import { TransactionHashVariant } from '../frontend/node_modules/genlayer-js/dis
 import { formatUnits, parseUnits, isAddress } from '../frontend/node_modules/viem/_esm/index.js';
 import { publicReceipt } from './receipt.mjs';
 import { closedCase, nativeLedgerConserved } from './verification.mjs';
+import { CONSUMER, authorization, authorizationMessage, exportTerms } from '../frontend/src/consumer-policy.mjs';
+import { authorizeExport } from '../frontend/server/consumer.mjs';
 
 const project = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const directory = resolve(project, 'docs/evidence/studio-dev');
@@ -317,6 +319,59 @@ async function browserCounterpart(id, action) {
   } else await withdrawal(id, 'buyer', `browser-${id}-refund`);
   output({ browserCounterpart: id, after: await snapshot(id) });
 }
+async function consumerLifecycle() {
+  await inspect();
+  if(accounts.issuer?.address.toLowerCase()!==CONSUMER.issuer.toLowerCase()) throw new Error('DEPLOYMENT_IDENTITY');
+  const id='ms001-export-v1';
+  journal.consumerCase ??= {id,expiry:Math.floor(Date.now()/1000)+86400};
+  await persist();
+  let a=await agreement(id);
+  if(!a) await step('ms001-create','issuer','create_offer',[id,'Registered dataset export',accounts.buyer.address,
+    'Dataset analysis','The named buyer may analyse the registered dataset independently of export permission B.',CONSUMER.title,exportTerms(),journal.consumerCase.expiry]);
+  a=await agreement(id);
+  if(a.buyer.toLowerCase()!==accounts.buyer.address.toLowerCase() || a.permissions[1].terms!==exportTerms()) throw new Error('DEPLOYMENT_IDENTITY');
+  if(a.phase==='OFFERED') await step('ms001-purchase','buyer','accept_offer',[id,a.digest],2n*10n**18n);
+  a=await agreement(id);
+  if(a.phase==='FUNDED') await step('ms001-review','issuer','review_dependencies',[id]);
+  a=await agreement(id);
+  if(JSON.stringify(a.dependencies)!==JSON.stringify(['INDEPENDENT','INDEPENDENT'])) throw new Error('UNEXPECTED_VERDICT');
+  const makeRequest=async signer=>{
+    const fields=authorization(await agreement(id),Math.floor(Date.now()/1000));
+    return {fields,signature:await signer.signMessage({message:authorizationMessage(fields)})};
+  };
+  const d=await deployment();
+  const consumerReader=(method,args)=>read(d.contractAddress,method,args);
+  if(a.permissions[1].status==='ACTIVE') {
+    let denied=false;
+    try {await authorizeExport(await makeRequest(accounts.buyer),{reader:consumerReader});} catch(error){denied=error.message==='DENIED';}
+    if(!denied) throw new Error('UNEXPECTED_VERDICT');
+    journal.consumerCase.unexercisedDenied=true;await persist();
+  }
+  if(a.permissions[0].status==='ACTIVE') await step('ms001-exit','buyer','exit_component',[id,'A']);
+  a=await agreement(id);
+  if(a.permissions[1].status==='ACTIVE') await step('ms001-exercise','buyer','consume_component',[id,'B']);
+  const delivered=await authorizeExport(await makeRequest(accounts.buyer),{reader:consumerReader});
+  let outsiderDenied=false;
+  try {await authorizeExport(await makeRequest(accounts.observer),{reader:consumerReader});} catch(error){outsiderDenied=error.message==='DENIED';}
+  if(!outsiderDenied || delivered.sha256!==CONSUMER.sha256) throw new Error('UNEXPECTED_VERDICT');
+  journal.consumerCase.delivery={at:new Date().toISOString(),signing:'SCRIPT_EIP191_REAL_SIGNATURE',holder:accounts.buyer.address,
+    resource:delivered.resource,version:delivered.version,sha256:delivered.sha256,bytes:Buffer.byteLength(delivered.csv),outsiderDenied};await persist();
+  await withdrawal(id,'buyer','ms001-buyer-withdraw');
+  await withdrawal(id,'issuer','ms001-issuer-withdraw');
+  a=await agreement(id);
+  if(a.phase!=='CLOSED') await step('ms001-close','issuer','close',[id]);
+  const after=await snapshot(id);
+  if(!closedCase(after) || !nativeLedgerConserved(after)) throw new Error('REMAINING_LIABILITY');
+  const proof={network:'studio-dev',phase:'MS-001',contractAddress:d.contractAddress,contractSourceCommit:d.sourceCommit,
+    resource:CONSUMER,unexercisedDenied:journal.consumerCase.unexercisedDenied===true,delivery:journal.consumerCase.delivery,
+    attempts:Object.fromEntries(Object.entries(journal.attempts).filter(([key])=>key.startsWith('ms001-'))),after,
+    browserExtensionProof:'PENDING_REAL_EVIDENCE',passed:true};
+  await mkdir(resolve(directory,'ms-001'),{recursive:true});
+  await save(resolve(directory,'ms-001/consumer-lifecycle.json'),proof);
+  output({phase:'MS-001',contractLifecycle:true,consumerDelivery:true,outsiderDenied,closed:true,
+    resourceSHA256:delivered.sha256,accounting:after.accounting,contractBalanceGEN:after.contractBalanceGEN,
+    browserExtensionProof:'PENDING_REAL_EVIDENCE'});
+}
 try {
   const command = process.argv[2] ?? 'inspect';
   if (command === 'inspect') await inspect();
@@ -325,6 +380,7 @@ try {
   else if (command === 'lifecycle') await lifecycle(process.argv[3]);
   else if (command === 'diagnose') await diagnose(process.argv[3]);
   else if (command === 'browser-counterpart') await browserCounterpart(process.argv[3], process.argv[4]);
+  else if (command === 'consumer-lifecycle') await consumerLifecycle();
   else throw new Error('UNKNOWN_COMMAND');
 } catch (error) {
   const allowed = ['NETWORK_IDENTITY', 'DEPLOYMENT_IDENTITY', 'EXECUTION_FAILED', 'PENDING_FINALITY', 'AMBIGUOUS_SUBMISSION', 'ROLE_UNAVAILABLE', 'ZERO_VALUE_SMOKE_REQUIRED', 'SOURCE_SMOKE_REQUIRED', 'COMMITTED_SOURCE_REQUIRED', 'DEPLOYMENT_ADDRESS', 'DEPLOYED_POLICY', 'UNKNOWN_COMMAND', 'RPC_FAILED', 'NATIVE_TRANSFER_UNPROVEN', 'UNEXPECTED_VERDICT', 'REMAINING_LIABILITY'];

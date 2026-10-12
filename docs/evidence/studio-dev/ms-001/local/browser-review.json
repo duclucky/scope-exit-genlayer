@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-12T01:34:14.389Z",
+  "phase": "MS-001",
+  "base": "http://127.0.0.1:5178/",
+  "mode": "ISOLATED_BROWSER_REAL_NODE_SIGNER_NO_EXTENSION",
+  "keyInBrowser": false,
+  "noTransactionSent": true,
+  "canonicalRead": true,
+  "registeredResource": "scopeexit-sample-records",
+  "signer": "0x45aD397c438397A702B53a7499a78D08961D39Db",
+  "walletRequests": [
+    "eth_requestAccounts",
+    "eth_chainId",
+    "eth_accounts",
+    "personal_sign"
+  ],
+  "downloadBytes": 64,
+  "sha256": "ccc772323809597156f8ce26adff3c3167158835119e3f485ecbbf4462eb0d29",
+  "disconnectedDisabled": true,
+  "disconnectClearsEligibility": true,
+  "widths": [
+    375,
+    768,
+    1024,
+    1440
+  ],
+  "pageErrors": 0,
+  "limitation": "A real authorized script signer answers personal_sign. This proves browser controls, real signature, live canonical API and downloaded bytes; it does not prove a Chrome wallet extension popup.",
+  "passed": true
+}
