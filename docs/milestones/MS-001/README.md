@@ -1,6 +1,6 @@
 # MS-001: wallet-authorized dataset export consumer
 
-Status: BUILDING. Baseline: 6720db3136498dacef2a81fbedd250de5b1ced66.
+Status: SUBMISSION_READY. Baseline: 6720db3136498dacef2a81fbedd250de5b1ced66.
 Owner confirmation on 2026-10-12 establishes acceptance for this run; independent
 Portal acceptance and points are not claimed. Portal milestone: NOT_SUBMITTED.
 
@@ -76,12 +76,12 @@ These are admission reasons, not execution PASS claims.
 
 ## Evidence Authority Matrix
 
-| Claim | Artifact/controller | Authority | Deterministic verification | Binding | Freshness/replay | Semantic role | Failure | Blocked consequence | Negative tests |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Resource grant | Exact canonical terms, issuer-authored | Locked service issuer | Exact issuer, B title/terms include resource ID/version/hash; authenticated buyer ratification | Chain/contract/agreement/digest/B/resource | Immutable configuration and definition | Accepted validator determines prerequisite relation | Deny, retry source outage | CSV delivery | Outsider issuer, mismatched terms/hash/entity/digest, injected authority |
-| Exercise | Finalized right + history, GenLayer | Accepted IC | B CONSUMED, reviewed relation present, matching EXERCISE_B event/actor before expiry | Buyer/entity/B | Finalized read only, no caller state | No new offchain judgment | Deny | CSV delivery | Active/cancelled/expired/unclear, absent/wrong-actor/late event |
-| Delivery authorization | Signed bounded message, requester | Canonical buyer EOA | Real EIP-191 signature; strict fields/domain/version/resource/contract/chain/digest; short timestamp window | Buyer/agreement/resource | At most 120 seconds; identical replay is idempotent redownload only | None | 403 or retryable unavailable | CSV delivery | Forged signer, field substitution, stale/future, extra keys |
-| Returned bytes | Server-owned synthetic CSV | Consumer operator | SHA-256 exact bytes matches fixed descriptor | Resource ID/version/hash | Immutable version; client verifies returned digest | None | Deny mismatched resource | Wrong-resource delivery | Corrupt resource, arbitrary URL/path and version |
+| Consequential claim/fact | Evidence/artifact | Data controller | Authoritative source/issuer | Deterministic verification | Canonical objective/entity/actor binding | Freshness/anti-replay | Semantic role after verification | Non-penalizing failure state | Consequence blocked | Required negative test |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Resource grant | Exact canonical terms | Issuer authors; buyer ratifies | Locked service issuer plus accepted IC | Exact issuer, B title/terms include resource ID/version/hash; authenticated buyer ratification | Chain/contract/agreement/digest/B/resource | Immutable configuration and definition | Accepted validator determines prerequisite relation | Deny, retry source outage | CSV delivery | Outsider issuer, mismatched terms/hash/entity/digest, injected authority |
+| Exercise | Finalized right and history | Accepted contract | Accepted IC | B CONSUMED, reviewed relation present, matching EXERCISE_B event/actor before expiry | Buyer/entity/B | Finalized read only, no caller state | No new offchain judgment | Deny | CSV delivery | Active/cancelled/expired/unclear, absent/wrong-actor/late event |
+| Delivery authorization | Signed bounded message | Requester | Canonical buyer EOA | Real EIP-191 signature; strict fields/domain/version/resource/contract/chain/digest; short timestamp window | Buyer/agreement/resource | At most 120 seconds; identical replay is idempotent redownload only | None | 403 or retryable unavailable | CSV delivery | Forged signer, field substitution, stale/future, extra keys |
+| Returned bytes | Server-owned synthetic CSV | Consumer operator | Consumer operator for owned synthetic resource | SHA-256 exact bytes matches fixed descriptor | Resource ID/version/hash | Immutable version; client verifies returned digest | None | Deny mismatched resource | Wrong-resource delivery | Corrupt resource, arbitrary URL/path and version |
 
 ## Delta claim-to-code and safety
 
@@ -142,3 +142,49 @@ EOA exposed through a QA provider, not a Chrome extension. No key entered the
 browser and no transaction was sent by that QA run. Extension evidence remains
 pending and cannot be inferred from this result. The owner requested no mouse
 takeover; no native Windows UI input is used for MS-001.
+
+### Production checkpoint
+
+Implementation commit: `51b1375123937b5ecd31ba0434eb1df3f2033eb3`.
+Exact delta: `6720db3136498dacef2a81fbedd250de5b1ced66..51b1375123937b5ecd31ba0434eb1df3f2033eb3`.
+Retained contract source, lockfile and CSS have an empty diff against baseline.
+`vercel --prod --yes` produced READY deployment
+`dpl_9jzpHGwKMtF3UC2Ezmeu27gzmLjo`; live alias is unchanged.
+HTTP200, ScopeExit title, React root and JS asset `index-R7-IqJJI.js` verified.
+
+[Production browser QA](../../evidence/studio-dev/ms-001/production/browser-review.json)
+passed on the actual live alias: real buyer EIP-191 signature, canonical reads,
+API delivery and downloaded 64-byte digest match. Disconnect and four widths
+passed with zero page errors. The QA signer remains explicitly script-operated,
+not a Chrome extension. Anonymous invalid live requests are rejected.
+
+The verified delivery claim is the consumer endpoint and its browser interface
+with cryptographic signer QA. No extension-operated delivery popup, independent
+adoption or new contract adjudication is claimed. A participant may repeat
+delivery after CLOSED; this does not mint another right or credit.
+
+## Final claim audit and submission status
+
+Implementation CI [38192841555](https://github.com/duclucky/scope-exit-genlayer/actions/runs/38192841555)
+completed SUCCESS for51b1375; documentation closure gets separate CI in the
+handoff. Source/tests/network/UI were reconciled: unchanged accepted IC,
+27 new tests and138 total, eight new finalized successful transactions, two
+native transfer proofs, exact consumer authority/resource/signature/time checks
+and actual production browser delivery. No invalid transaction or older receipt
+is counted as the delta. Endpoint failures return finite public messages and
+never expose raw provider/validator payloads.
+
+Measurement interval: 2026-10-12T01:27Z through01:42Z. One owner-operated
+agreement, identified by ms001-export-v1, canonical digest and resource version1.
+Local/production downloads are repeat tests of that grant, not additional users.
+No third-party usage, confidentiality or outside fulfilment claim is made.
+
+The app has a real selected-provider personal_sign control, actual cryptographic
+API verification and canonical reload; the live run used a real Node signer in
+an isolated browser. Extension popup compatibility for this new signature path
+remains unclaimed and can be added later without recounting this milestone.
+
+Copy-ready fields: [SUBMISSION.md](SUBMISSION.md), eleven steps:
+[HOW-TO.md](HOW-TO.md). Final Portal Submit requires explicit action-time
+authorization. Current Portal reference: NOT_SUBMITTED. Accepted baseline is
+not promoted by implementation or submission readiness.

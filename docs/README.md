@@ -1,5 +1,11 @@
 # ScopeExit product specification
 
+This document retains the original accepted contract/product specification.
+The new consumer integration is specified and verified in
+[MS-001](milestones/MS-001/README.md); current test totals are in the repository
+README. Historical planned/evidence rows below are not counted as new milestone
+claims or rewritten to change the original submission.
+
 The category is locked to Projects. This specification preserves the Phase 4 design and its originally pending evidence plan. The executed trace below records the current verified state; those completed proofs supersede the historical pending entries. MetaMask publication, semantic review, issuer withdrawal and closure are finalized successfully. Buyer counterpart actions are explicitly script-signed; see BROWSER-EVIDENCE.md.
 
 ## Identity

@@ -1,6 +1,6 @@
 # MS-001 copy-ready fields
 
-Status: DRAFT, NOT_SUBMITTED. Use only after the evidence checklist is completed.
+Status: SUBMISSION_READY, NOT_SUBMITTED.
 Final Portal Submit requires explicit action-time authorization.
 
 Category: Milestones
@@ -25,7 +25,23 @@ Contract: https://explorer-studio-dev.genlayer.com/address/0x61619ed664eAB900437
 
 Baseline: 6720db3136498dacef2a81fbedd250de5b1ced66, owner-confirmed accepted.
 
-Current implementation commit / CI: PENDING_VERIFICATION.
+Implementation commit: `51b1375123937b5ecd31ba0434eb1df3f2033eb3`.
+
+Implementation CI: https://github.com/duclucky/scope-exit-genlayer/actions/runs/38192841555
+Verified SUCCESS for implementation commit51b1375. The final handoff includes
+the separate CI result for documentation closure; historical baseline CI is not
+counted as delta evidence.
+
+Lifecycle evidence: https://github.com/duclucky/scope-exit-genlayer/blob/main/docs/evidence/studio-dev/ms-001/consumer-lifecycle.json
+
+Production browser evidence: https://github.com/duclucky/scope-exit-genlayer/blob/main/docs/evidence/studio-dev/ms-001/production/browser-review.json
+
+Verified counts: one retained IC; 138 passing tests (74 direct, 1 integration,
+28 tooling, 35 frontend). MS-001 adds 27 tests, one resource-bound closed case,
+eight successful finalized script-signed transactions and two exact 1 GEN native
+withdrawals. Current global totals are 10 GEN received/withdrawn and zero liability.
+
+Description length: 929 characters excluding its trailing newline.
 
 Exact steps: [HOW-TO.md](HOW-TO.md).
 
