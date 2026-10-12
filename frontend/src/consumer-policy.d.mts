@@ -4,3 +4,4 @@ export function authorization(agreement: Pick<Agreement,'id'|'digest'>,issuedAt:
 export function authorizationMessage(fields:Record<string,unknown>):string;
 export function exportTerms():string;
 export function registeredGrant(agreement:Agreement):boolean;
+export const EXTENSION_GRANT:{id:string;issuer:string;buyer:string};

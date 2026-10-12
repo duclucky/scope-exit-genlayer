@@ -3,10 +3,21 @@ import assert from 'node:assert/strict';
 import { generatePrivateKey, privateKeyToAccount } from '../../frontend/node_modules/viem/_esm/accounts/index.js';
 import { createHash } from 'node:crypto';
 import { authorizeExport, CSV } from '../../frontend/server/consumer.mjs';
-import { CONSUMER, authorization, authorizationMessage, exportTerms } from '../../frontend/src/consumer-policy.mjs';
+import { CONSUMER, authorization, authorizationMessage, exportTerms, registeredGrant } from '../../frontend/src/consumer-policy.mjs';
 const holder = privateKeyToAccount(generatePrivateKey());
 const outsider = privateKeyToAccount(generatePrivateKey());
 const now = 1900000000;
+const extensionIssuer='0x45248be151F7f7e230150db23774733Cd966Eb45';
+test('the owner extension verification grant has one fixed issuer, entity and buyer',()=>{
+  const a=agreement();a.id='ms001-extension-v1';a.issuer=extensionIssuer;a.buyer=CONSUMER.issuer;
+  assert.equal(registeredGrant(a),true);
+});
+for(const [field,value] of [['id','another-case'],['buyer',holder.address],['issuer',outsider.address]]) {
+  test(`verification issuer cannot authorize a substituted ${field}`,()=>{
+    const a=agreement();a.id='ms001-extension-v1';a.issuer=extensionIssuer;a.buyer=CONSUMER.issuer;
+    a[field]=value;assert.equal(registeredGrant(a),false);
+  });
+}
 const agreement = () => ({ id:'consumer-case', digest:'a'.repeat(64), issuer:CONSUMER.issuer,
   buyer:holder.address, expiry:now-10, phase:'CLOSED', attempt:1,
   dependencies:['INDEPENDENT','INDEPENDENT'], permissions:[{id:'A',status:'CANCELLED'},

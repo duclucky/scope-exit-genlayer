@@ -19,7 +19,7 @@ seven frontend routes and typed wallet writes; no actual consumer enforcement.
 
 | ID | Title | Status | Baseline | Relationship | Commit range | Deployment | Evidence | Portal | Outcome | Follow-up |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| MS-001 | Wallet-authorized dataset export consumer | SUBMISSION_READY | 6720db3 | NEW; extends internal rights into an actual consumer-owned delivery endpoint | 6720db3..51b1375 implementation; later docs-only closure | Retained IC; production dpl_9jzpHGwKMtF3UC2Ezmeu27gzmLjo | [Dossier](milestones/MS-001/README.md) | NOT_SUBMITTED | Pending | Graph expansion deferred; extension popup unclaimed |
+| MS-001 | Wallet-authorized dataset export consumer | BUILDING | 6720db3 | NEW; extends internal rights into an actual consumer-owned delivery endpoint | 6720db3..51b1375 plus closure and verification supplement | Retained IC; supplement deployment pending | [Dossier](milestones/MS-001/README.md) | NOT_SUBMITTED | Pending | Same phase reopened for actual extension wallet |
 
 Only MS-001 is active. No previous milestone exists. Acceptance of this phase
 must be reconciled before another phase is selected.
@@ -83,3 +83,9 @@ and verified browser interface; historical exercise proof remains distinct.
 Submission copy929 chars and eleven detailed steps are in the dossier.
 Final Portal Submit has not been authorized or performed. Accepted baseline
 remains6720db3; no later phase is selected.
+
+Dated amendment: owner requested extension verification and identified wallet
+0xc495ef51618d03267a1f227afe5b27b38c748272. MS-001 reopens BUILDING for one
+bounded verification case using another existing authorized service issuer.
+The earlier ready checkpoint remains historical. No new Milestone ID/submission
+or extension success is inferred.

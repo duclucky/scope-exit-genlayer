@@ -12,7 +12,7 @@ import { TransactionHashVariant } from '../frontend/node_modules/genlayer-js/dis
 import { formatUnits, parseUnits, isAddress } from '../frontend/node_modules/viem/_esm/index.js';
 import { publicReceipt } from './receipt.mjs';
 import { closedCase, nativeLedgerConserved } from './verification.mjs';
-import { CONSUMER, authorization, authorizationMessage, exportTerms } from '../frontend/src/consumer-policy.mjs';
+import { CONSUMER, EXTENSION_GRANT, authorization, authorizationMessage, exportTerms } from '../frontend/src/consumer-policy.mjs';
 import { authorizeExport } from '../frontend/server/consumer.mjs';
 
 const project = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -372,6 +372,54 @@ async function consumerLifecycle() {
     resourceSHA256:delivered.sha256,accounting:after.accounting,contractBalanceGEN:after.contractBalanceGEN,
     browserExtensionProof:'PENDING_REAL_EVIDENCE'});
 }
+async function extensionPreparation() {
+  await inspect();
+  if(accounts.observer?.address.toLowerCase()!==EXTENSION_GRANT.issuer.toLowerCase()
+    || accounts.issuer?.address.toLowerCase()!==EXTENSION_GRANT.buyer.toLowerCase()) throw new Error('DEPLOYMENT_IDENTITY');
+  const id=EXTENSION_GRANT.id;
+  journal.extensionCase ??= {id,expiry:Math.floor(Date.now()/1000)+86400};await persist();
+  let a=await agreement(id);
+  if(!a) await step('ms001-extension-create','observer','create_offer',[id,'Extension wallet dataset export',EXTENSION_GRANT.buyer,
+    'Dataset analysis','The named buyer may analyse the registered dataset independently of export permission B.',CONSUMER.title,exportTerms(),journal.extensionCase.expiry]);
+  a=await agreement(id);
+  if(a.issuer.toLowerCase()!==EXTENSION_GRANT.issuer.toLowerCase() || a.buyer.toLowerCase()!==EXTENSION_GRANT.buyer.toLowerCase()
+    || a.permissions[1].terms!==exportTerms()) throw new Error('DEPLOYMENT_IDENTITY');
+  if(a.phase==='OFFERED') await step('ms001-extension-purchase','issuer','accept_offer',[id,a.digest],2n*10n**18n);
+  a=await agreement(id);
+  if(a.phase==='FUNDED') await step('ms001-extension-review','observer','review_dependencies',[id]);
+  a=await agreement(id);
+  if(JSON.stringify(a.dependencies)!==JSON.stringify(['INDEPENDENT','INDEPENDENT'])) throw new Error('UNEXPECTED_VERDICT');
+  if(a.permissions[0].status==='ACTIVE') await step('ms001-extension-exit','issuer','exit_component',[id,'A']);
+  a=await agreement(id);
+  if(a.permissions[1].status==='ACTIVE') await step('ms001-extension-exercise','issuer','consume_component',[id,'B']);
+  // Here account alias issuer is the canonical buyer; observer is this case's issuer.
+  const deployed=await deployment();
+  for(const [role,credit,key] of [['issuer','buyerCreditGEN','ms001-extension-buyer-withdraw'],['observer','issuerCreditGEN','ms001-extension-issuer-withdraw']]) {
+    a=await agreement(id);
+    const previous=journal.attempts[key];
+    if(previous?.transferProof?.proven) continue;
+    if(!previous && a[credit]==='0') continue;
+    const {raw}=await step(key,role,'withdraw',[id]);
+    const item=journal.attempts[key],after=await snapshot(id);
+    const amount=parseUnits(item.canonical.before.agreement[credit],18);
+    const decrease=parseUnits(item.beforeContractGEN,18)-parseUnits(after.contractBalanceGEN,18);
+    const increase=await balance(accounts[role].address)-parseUnits(item.beforeActorGEN,18);
+    const msg=raw.messages?.length===1?raw.messages[0]:null;
+    const bound=Boolean(msg && [0,'0'].includes(msg.messageType) && msg.onAcceptance===false
+      && msg.recipient?.toLowerCase()===accounts[role].address.toLowerCase() && ['', '0x'].includes(msg.data) && BigInt(msg.value)===amount
+      && raw.to_address?.toLowerCase()===deployed.contractAddress.toLowerCase() && raw.from_address?.toLowerCase()===accounts[role].address.toLowerCase());
+    const proven=amount>0n && decrease===amount && increase>0n && increase<=amount && bound && after.agreement[credit]==='0';
+    item.transferProof={expectedGEN:gen(amount),exactContractDecreaseGEN:gen(decrease),recipientNetIncreaseGEN:gen(increase),recipient:accounts[role].address,nativeMessageBound:bound,proven};await persist();
+    if(!proven) throw new Error('NATIVE_TRANSFER_UNPROVEN');
+  }
+  a=await agreement(id);if(a.phase!=='CLOSED') await step('ms001-extension-close','observer','close',[id]);
+  const after=await snapshot(id);
+  if(!closedCase(after)||!nativeLedgerConserved(after)) throw new Error('REMAINING_LIABILITY');
+  await save(resolve(directory,'ms-001/extension-preparation.json'),{network:'studio-dev',grant:EXTENSION_GRANT,
+    signing:'SCRIPT_PREPARATION_ONLY',extensionDelivery:'PENDING_OWNER_SIGNATURE',after,
+    attempts:Object.fromEntries(Object.entries(journal.attempts).filter(([key])=>key.startsWith('ms001-extension-')))});
+  output({extensionCase:id,buyer:EXTENSION_GRANT.buyer,issuer:EXTENSION_GRANT.issuer,closed:true,accounting:after.accounting,contractBalanceGEN:after.contractBalanceGEN,extensionDelivery:'PENDING_OWNER_SIGNATURE'});
+}
 try {
   const command = process.argv[2] ?? 'inspect';
   if (command === 'inspect') await inspect();
@@ -381,6 +429,7 @@ try {
   else if (command === 'diagnose') await diagnose(process.argv[3]);
   else if (command === 'browser-counterpart') await browserCounterpart(process.argv[3], process.argv[4]);
   else if (command === 'consumer-lifecycle') await consumerLifecycle();
+  else if (command === 'extension-prepare') await extensionPreparation();
   else throw new Error('UNKNOWN_COMMAND');
 } catch (error) {
   const allowed = ['NETWORK_IDENTITY', 'DEPLOYMENT_IDENTITY', 'EXECUTION_FAILED', 'PENDING_FINALITY', 'AMBIGUOUS_SUBMISSION', 'ROLE_UNAVAILABLE', 'ZERO_VALUE_SMOKE_REQUIRED', 'SOURCE_SMOKE_REQUIRED', 'COMMITTED_SOURCE_REQUIRED', 'DEPLOYMENT_ADDRESS', 'DEPLOYED_POLICY', 'UNKNOWN_COMMAND', 'RPC_FAILED', 'NATIVE_TRANSFER_UNPROVEN', 'UNEXPECTED_VERDICT', 'REMAINING_LIABILITY'];

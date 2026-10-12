@@ -1,6 +1,6 @@
 # MS-001 copy-ready fields
 
-Status: SUBMISSION_READY, NOT_SUBMITTED.
+Status: BUILDING (extension-verification supplement), NOT_SUBMITTED.
 Final Portal Submit requires explicit action-time authorization.
 
 Category: Milestones
@@ -36,8 +36,8 @@ Lifecycle evidence: https://github.com/duclucky/scope-exit-genlayer/blob/main/do
 
 Production browser evidence: https://github.com/duclucky/scope-exit-genlayer/blob/main/docs/evidence/studio-dev/ms-001/production/browser-review.json
 
-Verified counts: one retained IC; 138 passing tests (74 direct, 1 integration,
-28 tooling, 35 frontend). MS-001 adds 27 tests, one resource-bound closed case,
+Verified counts: one retained IC; 142 passing tests (74 direct, 1 integration,
+32 tooling, 35 frontend). MS-001 adds 31 tests; the original new resource-bound closed case has
 eight successful finalized script-signed transactions and two exact 1 GEN native
 withdrawals. Current global totals are 10 GEN received/withdrawn and zero liability.
 
@@ -50,7 +50,8 @@ Expected outcome: Only the registered grant's named buyer can authorize CSV deli
 Usage measurement: one owner-operated agreement, deduplicated by agreement ID,
 digest and resource version. Repeat HTTP reads are not new users or adoption.
 
-Limits: public synthetic dataset, one service-owned issuer and resource, EOA
+Limits: public synthetic dataset, one primary service issuer and a second issuer
+admitted only for the fixed owner extension-verification case, one resource, EOA
 signatures, Studio Dev only. Extension-operated consumer delivery evidence is
 pending until observed; script EIP-191 signing is recorded separately. No
 independent Portal acceptance record or score is inferred from the owner report.

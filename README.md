@@ -25,7 +25,7 @@ The deployed source is commit `9e5de0c122f27967c735034bd73dc67961bbe6cb`, pinned
 
 ## Verification
 
-`npm run check` passes GenVM lint, 74 direct Python tests, one three-validator GLSim integration, 28 Node tooling tests, 35 frontend tests, TypeScript and the production build: 138 tests with no skipped tests. Simulator behavior is distinct from actual Studio Dev execution and extension signing.
+`npm run check` passes GenVM lint, 74 direct Python tests, one three-validator GLSim integration, 32 Node tooling tests, 35 frontend tests, TypeScript and the production build: 142 tests with no skipped tests. Simulator behavior is distinct from actual Studio Dev execution and extension signing.
 
 [Browser read proof](docs/evidence/local/frontend/state-review.json) checks actual deployed agreement views, results, and canonical history through the same-origin IC proxy. The app includes seven routes, detected-wallet selection, logout and all nine write wrappers. [Browser publication proof](docs/evidence/studio-dev/browser-sx-ddc3df46-create_offer.json) binds a real MetaMask-signed, finalized successful transaction to its canonical agreement. [Browser issuer lifecycle proof](docs/BROWSER-EVIDENCE.md) covers publication, review, withdrawal and closure, with buyer counterpart actions explicitly script-signed.
 
@@ -67,6 +67,13 @@ Delivery retry sends no GEN and never exercises or pays again. Only the locked
 service issuer's exact resource grant is accepted; a lookalike offer grants no
 access. See the phase dossier for current local, Studio Dev, live-service and
 browser-extension proof status.
+
+A bounded extension-verification grant also admits issuer
+0x45248be151F7f7e230150db23774733Cd966Eb45 only for case
+ms001-extension-v1 and buyer 0xc495ef51618d03267a1f227afe5b27b38c748272.
+It requires the same exact resource terms and finalized exercise; changing the
+case or buyer denies access. This preserves all original grants and lets the
+owner verify delivery using an existing extension account without importing keys.
 
 The MS-001 script-signed lifecycle now has an additional CLOSED funded case,
 two exact 1 GEN native withdrawals and verified 64-byte consumer delivery.

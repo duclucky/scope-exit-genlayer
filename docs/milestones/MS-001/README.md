@@ -1,6 +1,6 @@
 # MS-001: wallet-authorized dataset export consumer
 
-Status: SUBMISSION_READY. Baseline: 6720db3136498dacef2a81fbedd250de5b1ced66.
+Status: BUILDING (extension-verification supplement). Baseline: 6720db3136498dacef2a81fbedd250de5b1ced66.
 Owner confirmation on 2026-10-12 establishes acceptance for this run; independent
 Portal acceptance and points are not claimed. Portal milestone: NOT_SUBMITTED.
 
@@ -188,3 +188,25 @@ Copy-ready fields: [SUBMISSION.md](SUBMISSION.md), eleven steps:
 [HOW-TO.md](HOW-TO.md). Final Portal Submit requires explicit action-time
 authorization. Current Portal reference: NOT_SUBMITTED. Accepted baseline is
 not promoted by implementation or submission readiness.
+
+## Extension-verification supplement (2026-10-12)
+
+The owner identified the actual extension wallet as
+0xc495ef51618d03267a1f227afe5b27b38c748272. The earlier script buyer was not
+confirmed in that extension, so no extension success was recorded. Prepare
+`ms001-extension-v1` with that wallet as buyer and the already authorized service
+observer EOA 0x45248be151F7f7e230150db23774733Cd966Eb45 as issuer. The original
+registered issuer and grant remain valid. This second issuer grants access only
+for this exact case and exact buyer, never arbitrary offers or destinations.
+
+Authority row: canonical issuer equals the fixed observer, entity equals the
+fixed case, buyer equals the owner's identified EOA and existing exact B resource
+terms/hash match. Authority/IDs come from consumer configuration, not artifact
+prose. Wrong ID/buyer/issuer must deny. Existing signature/time/finalized exercise
+checks and GEN destinations remain unchanged; no contract write is changed.
+
+The idempotent preparation script signs real Studio Dev writes with existing
+authorized accounts and must finish both withdrawals and closure. Only the
+owner signs the final personal_sign download in the extension. That signature
+moves no GEN and needs no import of a script wallet key. Script-write and
+extension-delivery evidence remain distinct.
